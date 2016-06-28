@@ -15,6 +15,12 @@ message GAException {
   string message = 2;
 }
 
+message Allele {
+  string id = 1;
+  string bases = 2;
+  int32 length = 3;
+}
+
 // Indicates the associated DNA strand for some data item.
 enum Strand {
   STRAND_UNSPECIFIED = 0;
