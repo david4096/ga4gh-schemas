@@ -7,41 +7,14 @@ import "ga4gh/metadata.proto";
 import "google/protobuf/struct.proto";
 
 /*
-This protocol defines annotations on GA4GH genomic sequences It includes two
-types of annotations: continuous and discrete hierarchical.
+Sequence features allow a simple way to represent and access the 
+variety of genomic features.
 
-The discrete hierarchical annotations are derived from the Sequence Ontology
-(SO) and GFF3 work
-
-   http://www.sequenceontology.org/gff3.shtml
-
-The goal is to be able to store annotations using the GFF3 and SO conceptual
-model, although there is not necessarly a one-to-one mapping in Protobuf messages
-to GFF3 records.
-
-The minimum requirement is to be able to accurately represent the current
-state of the art annotation data and the full SO model.  Feature is the
-core generic record which corresponds to the a GFF3 record.
+It models genomic features in terms of their position relative to 
+a reference genome and provides access patterns for gene, exon, 
+transcipt, variant, and other feature types from the Sequence 
+Ontology (http://www.sequenceontology.org).
 */
-
-// Type defining a collection of attributes associated with various protocol
-// records. Each attribute is a name that maps to an array of one or more
-// values. Values can be strings, external identifiers, or ontology terms Values
-// should be split into the array elements instead of using a separator syntax
-// that needs to parsed.
-message Attributes {
-  message AttributeValue {
-    oneof value {
-      string string_value = 1;
-      ExternalIdentifier external_identifier = 2;
-      OntologyTerm ontology_term = 3;
-    }
-  }
-  message AttributeValueList {
-    repeated AttributeValue values = 1;
-  }
-  map<string, AttributeValueList> vals = 1;
-}
 
 // Node in the annotation graph that annotates a contiguous region of a
 // sequence.
@@ -82,14 +55,8 @@ message Feature {
   // in the Sequence Ontology.
   OntologyTerm feature_type = 9;
 
-  // Name/value attributes of the annotation.  Attribute names follow the GFF3
-  // naming convention of reserved names starting with an upper cases character,
-  // and user-define names start with lower-case.  Most GFF3 pre-defined
-  // attributes apply, the exceptions are ID and Parent, which are defined as
-  // fields. Additional, the following attributes are added:
-  //   * Score - the GFF3 score column
-  //   * Phase - the GFF3 phase column for CDS features.
-  Attributes attributes = 10;
+  // Remaining structured metadata key-value pairs.
+  map<string, google.protobuf.ListValue> info = 6;
 }
 
 // A set of sequence features annotations.
