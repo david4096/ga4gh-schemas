@@ -2,7 +2,9 @@ syntax = "proto3";
 
 package ga4gh;
 
-import "ga4gh/sequence_annotations.proto";
+import "ga4gh/features.proto";
+import "ga4gh/metadata.proto";
+import "ga4gh/common.proto";
 
 service SequenceAnnotationService {
   // Gets a list of `FeatureSet` matching the search criteria.

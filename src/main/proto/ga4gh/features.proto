@@ -26,12 +26,7 @@ message Feature {
   string name = 2;
 
   // Parent Id of this node. Set to empty string if node has no parent.
-  string parent_id = 2;
-
-  // Ordered array of Child Ids of this node. Since not all child nodes are
-  // ordered by genomic coordinates, this can't always be reconstructed from
-  // parent_id's of the children alone.
-  repeated string child_ids = 3;
+  string parent_id = 3;
 
   // Identifier for the containing feature set.
   string feature_set_id = 4;
