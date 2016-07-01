@@ -27,37 +27,40 @@ message Feature {
 
   // Parent Id of this node. Set to empty string if node has no parent.
   string parent_id = 3;
+  
+  // Sibling rank
+  int32 siblink_rank = 4;
 
   // Identifier for the containing feature set.
-  string feature_set_id = 4;
+  string feature_set_id = 5;
 
   // The start position at which this feature occurs (0-based). This
   // corresponds to the first base of the string of reference bases. Genomic
   // positions are non-negative integers less than reference length. Features
   // spanning the join of circular genomes are represented as two features one
   // on each side of the join (position 0).
-  Position start = 5;
+  Position start = 6;
 
   // The end position (exclusive), resulting in [start, end) closed-open
   // interval. This is typically calculated by `start +
   // reference_bases.length`.
-  Position end = 6;
+  Position end = 7;
 
   // Feature that is annotated by this region.  Normally, this will be a term
   // in the Sequence Ontology.
-  OntologyTerm feature_type = 7;
+  OntologyTerm feature_type = 8;
   
   // The bases of this feature on the reference.
-  string reference_bases = 8;
+  string reference_bases = 9;
   
   // If the feature describes a variant the alternate bases are described here.
-  string alternate_bases = 9;
+  string alternate_bases = 10;
 
   // From gene ontology
-  OntologyTerm gene_symbol = 10;
+  OntologyTerm gene_symbol = 11;
   
   // Remaining structured metadata key-value pairs.
-  map<string, google.protobuf.ListValue> info = 11;
+  map<string, google.protobuf.ListValue> info = 12;
 }
 
 // A set of sequence features annotations.
