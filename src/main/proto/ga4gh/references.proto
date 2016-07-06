@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package ga4gh;
 
-// A `Reference` is a canonical assembled contig, intended to act as a
+// A `Reference` is a canonical assembled scaffold, intended to act as a
 // reference coordinate space for other genomic annotations. A single
 // `Reference` might represent the human chromosome 1, for instance.
 //
