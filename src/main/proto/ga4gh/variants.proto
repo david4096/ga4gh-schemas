@@ -158,21 +158,8 @@ message Variant {
   // milliseconds from the epoch.
   int64 updated = 5;
 
-  // The reference on which this variant occurs.
-  // (e.g. `chr20` or `X`)
-  string reference_name = 6;
-
-  // The start position at which this variant occurs (0-based).
-  // This corresponds to the first base of the string of reference bases.
-  // Genomic positions are non-negative integers less than reference length.
-  // Variants spanning the join of circular genomes are represented as
-  // two variants one on each side of the join (position 0).
-  int64 start = 7;
-
-  // The end position (exclusive), resulting in [start, end) closed-open
-  // interval.
-  // This is typically calculated by `start + referenceBases.length`.
-  int64 end = 8;
+  // The position this 
+  Position position = 13
 
   // The reference bases for this variant. They start at the given start
   // position.
