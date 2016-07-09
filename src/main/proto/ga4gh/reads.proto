@@ -131,6 +131,35 @@ message LinearAlignment {
   repeated CigarUnit cigar = 3;
 }
 
+message Fragment {
+  // The fragment ID.
+  string id = 1;
+
+  // The fragment name. Equivalent to QNAME (query template name) in SAM.
+  string fragment_name = 2;
+  
+  int64 start = 3;
+  
+  int64 end = 4;
+
+  // The orientation and the distance between reads from the fragment are
+  // inconsistent with the sequencing protocol (inverse of SAM flag 0x2).
+  bool improper_placement = 3;
+
+  // The fragment is a PCR or optical duplicate (SAM flag 0x400)
+  bool duplicate_fragment = 4;
+
+  // The number of reads in the fragment (extension to SAM flag 0x1)
+  int64 number_reads = 5;
+
+  // The observed length of the fragment, equivalent to TLEN in SAM.
+  int32 fragment_length = 6;
+
+  // The IDs of the `ReadAlignment`s in the fragment
+  repeated string read_alignment_ids;
+
+}
+
 // Each read alignment describes an alignment with additional information
 // about the fragment and the read. A read alignment object is equivalent to a
 // line in a SAM file.
@@ -151,6 +180,9 @@ message ReadAlignment {
 
   // The fragment name. Equivalent to QNAME (query template name) in SAM.
   string fragment_name = 3;
+
+  // The server-side id of the fragment.
+  string fragment_id = 3;
 
   // The orientation and the distance between reads from the fragment are
   // inconsistent with the sequencing protocol (inverse of SAM flag 0x2).
