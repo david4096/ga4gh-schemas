@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package ga4gh;
 
-import "ga4gh/bio_metadata.proto";
+import "../ga4gh/bio_metadata.proto";
 import "google/api/annotations.proto";
 
 

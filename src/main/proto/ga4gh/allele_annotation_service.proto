@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package ga4gh;
 
-import "ga4gh/allele_annotations.proto";
+import "../ga4gh/allele_annotations.proto";
 import "google/api/annotations.proto";
-import "ga4gh/metadata.proto";
+import "../ga4gh/metadata.proto";
 
 service AlleleAnnotationService {
   // Gets a list of `VariantAnnotation`s matching the search criteria.
