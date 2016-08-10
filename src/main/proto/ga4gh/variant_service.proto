@@ -49,7 +49,7 @@ service VariantService {
   rpc GetVariant(GetVariantRequest)
       returns (Variant) {
       option (google.api.http) = {
-        post: "/v0.6.6a/variants/{variant_id}"
+        get: "/v0.6.6a/variants/{variant_id}"
       };
     };
   
