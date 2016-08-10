@@ -52,6 +52,18 @@ service VariantService {
         post: "/v0.6.6a/variants/{variant_id}"
       };
     };
+  
+  // Add variant
+  //
+  // `POST /callsets/search` must accept a JSON version of
+  // `SearchCallSetsRequest` as the post body and will return a JSON version of
+  // `SearchCallSetsResponse`.
+  rpc AddVariant(AddVariantRequest)
+      returns (WriteResponse) {
+      option (google.api.http) = {
+        post: "/v0.6.6a/variantsets/{variant_set_id}"
+      };
+    };
 
   // Gets a list of call sets matching the search criteria.
   //
@@ -77,6 +89,15 @@ service VariantService {
   };
 }
 
+message AddVariantRequest {
+  string variant_set_id = 1;
+  Variant variant = 2;
+}
+
+message WriteResponse {
+  bool created = 1;
+  Variant variant = 2;
+}
 // ******************  /variantsets  *********************
 // This request maps to the body of `POST /variantsets/search` as JSON.
 message SearchVariantSetsRequest {
