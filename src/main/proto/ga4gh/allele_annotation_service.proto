@@ -49,11 +49,7 @@ message SearchVariantAnnotationsRequest {
   string variant_annotation_set_id = 1;
 
   // Only return variants with reference alleles on the reference with this
-  // name. One of this field or `reference_id` is required.
-  string reference_name = 2;
-
-  // Only return variants with reference alleles on the reference with this
-  // ID. One of this field or `reference_name` is required.
+  // ID.
   string reference_id = 3;
 
   // Required if reference_name or reference_id supplied. The beginning of the
@@ -64,7 +60,7 @@ message SearchVariantAnnotationsRequest {
   // (position 0).
   int64 start = 4;
 
-  // Required if reference_name or reference_id supplied. The end of the window
+  // Required if reference_id supplied. The end of the window
   // (0-based, exclusive) for which variants with overlapping reference
   // alleles should be returned.
   int64 end = 5;
@@ -75,8 +71,7 @@ message SearchVariantAnnotationsRequest {
   // Features may include specific transcripts or genes. A search by gene will
   // return information for all transcripts associated with the gene in the
   // variant annotation set.
-  // This or a location (referenceName/referenceId plus optional start and end)
-  // must be supplied.
+  // This or a location must be supplied.
   // If empty, return all variant annotations in specified window.
   // repeated string feature_ids;
 

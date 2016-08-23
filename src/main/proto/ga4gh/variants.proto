@@ -159,8 +159,7 @@ message Variant {
   int64 updated = 5;
 
   // The reference on which this variant occurs.
-  // (e.g. `chr20` or `X`)
-  string reference_name = 6;
+  string reference_id = 6;
 
   // The start position at which this variant occurs (0-based).
   // This corresponds to the first base of the string of reference bases.

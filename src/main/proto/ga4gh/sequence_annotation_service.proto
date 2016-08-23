@@ -84,9 +84,8 @@ message SearchFeaturesRequest {
   // ID. Either `feature_set_id` or `parent_id` must be non-empty.
   string parent_id = 4;
 
-  // Only return features on the reference with this name
-  // (matched to literal reference name as imported from the GFF3).
-  string reference_name = 5;
+  // Only return features on the reference with this ID.
+  string reference_id = 5;
 
   // Required. The beginning of the window (0-based, inclusive) for which
   // overlapping features should be returned.  Genomic positions are
