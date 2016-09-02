@@ -49,6 +49,9 @@ message Reference {
 
   // ID from http://www.ncbi.nlm.nih.gov/taxonomy (e.g. 9606->human).
   int32 ncbi_taxon_id = 9;
+  
+  // External identifiers for this message.
+  repeat ExternalIdentifier external_identifers = 10;
 }
 
 // A `ReferenceSet` is a set of `Reference` s which typically comprise a
@@ -96,4 +99,7 @@ message ReferenceSet {
   // additional sequences, or some of the sequences within it are derived
   // (see the definition of `isDerived` in `Reference`).
   bool is_derived = 9;
+  
+  // External identifiers for this message.
+  repeat ExternalIdentifier external_identifers = 10;
 }

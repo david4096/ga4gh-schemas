@@ -97,6 +97,9 @@ message Feature {
   //   * Score - the GFF3 score column
   //   * Phase - the GFF3 phase column for CDS features.
   Attributes attributes = 12;
+  
+  // External identifiers for this message.
+  repeat ExternalIdentifier external_identifers = 13;
 }
 
 // A set of sequence features annotations.
@@ -120,4 +123,7 @@ message FeatureSet {
 
   // Remaining structured metadata key-value pairs.
   map<string, google.protobuf.ListValue> info = 6;
+  
+  // External identifiers for this message.
+  repeat ExternalIdentifier external_identifers = 7;
 }

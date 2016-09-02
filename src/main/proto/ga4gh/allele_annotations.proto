@@ -70,6 +70,9 @@ message VariantAnnotationSet {
   //  Analysis details. It is essential to supply versions for all software and
   // reference data used.
   Analysis analysis = 4;
+  
+  // External identifiers for this message.
+  repeat ExternalIdentifier external_identifers = 6;
 }
 
 // A HGVSAnnotation record holds Human Genome Variation Society descriptions of

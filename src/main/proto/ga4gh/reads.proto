@@ -93,6 +93,9 @@ message ReadGroupSet {
   // The read groups in this set.
   repeated ReadGroup read_groups = 5;
 
+  // External identifiers for this message.
+  repeat ExternalIdentifier external_identifers = 6;
+  
   // NB: we require that all readgroups in the set are mapped to the same
   // referenceSet.
 }

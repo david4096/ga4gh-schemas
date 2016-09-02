@@ -44,6 +44,9 @@ message Individual {
   // Use `null` when unknown or not applicable.
   // Recommended: PATO http://purl.obolibrary.org/obo/PATO_0020001; PATO_0020002
   OntologyTerm sex = 8;
+  
+  // External identifiers for this message.
+  repeat ExternalIdentifier external_identifers = 6;
 
   // A map of additional information.
   map<string, google.protobuf.ListValue> info = 9;
@@ -88,6 +91,9 @@ message BioSample {
 
   // The individual this biosample was derived from.
   string individual_id = 8;
+  
+  // External identifiers for this message.
+  repeat ExternalIdentifier external_identifers = 10;
 
   // A map of additional information.
   map<string, google.protobuf.ListValue> info = 9;

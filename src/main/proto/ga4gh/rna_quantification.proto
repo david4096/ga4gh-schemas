@@ -36,6 +36,9 @@ message RnaQuantificationSet {
 
   // The RNA quantification set name.
   string name = 3;
+  
+  // External identifiers for this message.
+  repeat ExternalIdentifier external_identifers = 6;
 }
 
 // Top level identifying information
@@ -61,6 +64,9 @@ message RnaQuantification {
 
   // ID of the containing RnaQuantificationSet.
   string rna_quantification_set_id = 7;
+  
+  // External identifiers for this message.
+  repeat ExternalIdentifier external_identifers = 6;
 }
 
 // The actual numerical quantification for each feature.

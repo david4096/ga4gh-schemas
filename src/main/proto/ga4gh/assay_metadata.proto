@@ -63,6 +63,9 @@ message Experiment {
   // or slide unique identifier.
   string platform_unit = 15;
 
+  // External identifiers for this message.
+  repeat ExternalIdentifier external_identifers = 17;
+
   // A map of additional experiment information.
   map<string, google.protobuf.ListValue> info = 16;
 }
