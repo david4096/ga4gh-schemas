@@ -1,0 +1,152 @@
+syntax = "proto3";
+
+package ga4gh;
+
+// A sequence is a set of bases. To facilitate interchange
+// of large sequences, we implement a tree hashing scheme
+// that allows sequences of arbitrary length to be
+// represented succinctly.
+
+// Sequences which have their `bases` string set are 
+// leaves of the hash tree. To reconstruct a sequence a
+// client recursively builds the sequence by requesting
+// sequence identifiers until reaching a sequence with
+// a string of `bases`.
+
+// To guarantee the identifiers, a hashing function, or
+// combination of hashing functions must be fixed for
+// a given implementation and have a low probability
+// of collision.
+
+// For most sequences found in FASTQ files, a single leaf
+// Sequence message wis sufficient to represent the bases.
+
+// For example, if we could only store sequences 3 bases
+// and we wanted to interchange the sequence ATGTCAGCA
+// we would first hash together the entire sequence
+// and set the sequence_id.
+
+// Then, the sequence ATG, TCA, and GCA are hashed
+// separately and a message is made for each.
+
+// {sequence_id: 0xA, bases: {sequence_ids: 0x1, 0x2, 0x3}}
+
+// {sequence_id: 0x1, sequence: {bases}}
+// {sequence_id: 0x2, sequence: {bases}}
+// {sequence_id: 0x3, sequence: {bases}}
+
+message RawSequence {
+  message Bases {
+    oneof {
+      string string_value = 1;
+      repeated string raw_sequence_ids = 2;
+    }
+    string raw_sequence_id = 1;
+    Bases sequence = 2;
+  }
+}
+
+// A sequencing event is an observation of a sequence
+// and sequences are tagged in order to interchange
+// data in a format familiar similar to FASTQ.
+
+message Sequence {
+  string sequence_set_id = 1;
+  string sequence_id = 2;
+  RawSequence bases = 3;
+  int64 length = 4;
+  string quality = 4;
+  bool pair = 5;
+  map<string, google.protobuf.ListValue> info = 14;
+}
+
+message SequenceSet {
+  string dataset_id = 1;
+  string biosample_id = 2;
+  string experiment_id = 3;
+  map<string, google.protobuf.ListValue> info = 14;
+}
+
+service SequenceService {
+  rpc SearchSequenceSet(SearchSequenceSetRequest)
+    returns (SearchSequenceSetResponse) {
+      option (google.api.http) = {
+        post: "/v0.6.0a8/sequencesets/search"
+        body: "*"
+      };
+    };
+  
+  rpc SearchSequence(SearchSequenceRequest)
+    returns (SearchSequenceResponse) {
+      option (google.api.http) = {
+        post: "/v0.6.0a8/sequences/search"
+        body: "*"
+      };
+    };
+
+  rpc GetSequenceSet(GetSequenceSetRequest)
+    returns (SequenceSet) {
+      option (google.api.http) = {
+        get: "/v0.6.0a8/sequencesets/sequence_set_id"
+      };
+    };
+
+  rpc GetSequence(GetSequenceRequest)
+    returns (Sequence) {
+      option (google.api.http) = {
+        get: "/v0.6.0a8/sequences/sequence_id"
+      };
+    };
+  
+  rpc GetRawSequence(GetRawSequenceRequest)
+    returns (RawSequence) {
+      option (google.api.http) = {
+        get: "/v0.6.0a8/rawsequences/raw_sequence_id"
+      };
+    };
+}
+
+message SearchSequenceSetRequest {
+  string dataset_id = 1;
+  string biosample_id = 2;
+  string experiment_id = 3;
+  int32 page_size = 2;
+
+  // The continuation token, which is used to page through large result sets.
+  // To get the next page of results, set this parameter to the value of
+  // `next_page_token` from the previous response.
+  string page_token = 3;
+}
+
+message SearchSequenceSetResponse {
+  repeated SequenceSet sequence_set = 1;
+
+  // The continuation token, which is used to page through large result sets.
+  // Provide this value in a subsequent request to return the next page of
+  // results. This field will be empty if there aren't any additional results.
+  string next_page_token = 2;
+}
+
+message SearchSequenceRequest {
+  string sequence_set_id = 1;
+  string raw_sequence_id = 2;
+  bool pair = 3;
+  int32 page_size = 2;
+
+  // The continuation token, which is used to page through large result sets.
+  // To get the next page of results, set this parameter to the value of
+  // `next_page_token` from the previous response.
+  string page_token = 3;
+}
+
+message GetSequenceSetRequest {
+  string sequence_set_id = 1;
+}
+
+message GetSequenceRequest {
+  string sequence_id = 1;
+}
+
+message GetRawSequence {
+  string raw_sequence_id = 1;
+}
