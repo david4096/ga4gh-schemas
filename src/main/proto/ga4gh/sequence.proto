@@ -19,22 +19,31 @@ package ga4gh;
 // of collision.
 
 // For most sequences found in FASTQ files, a single leaf
-// Sequence message wis sufficient to represent the bases.
+// Sequence message is sufficient to represent the bases.
 
 // For example, if we could only store sequences 3 bases
 // and we wanted to interchange the sequence ATGTCAGCA
 // we would first hash together the entire sequence
-// and set the sequence_id.
+// and set the raw_sequence_id.
 
 // Then, the sequence ATG, TCA, and GCA are hashed
 // separately and a message is made for each.
 
-// {sequence_id: 0xA, bases: {sequence_ids: 0x1, 0x2, 0x3}}
+// {raw_sequence_id: 0xA, sequence: {raw_sequence_ids: 0x1, 0x2, 0x3}}
 
-// {sequence_id: 0x1, sequence: {bases}}
-// {sequence_id: 0x2, sequence: {bases}}
-// {sequence_id: 0x3, sequence: {bases}}
+// {raw_sequence_id: 0x1, sequence: {string_value: ATG}}
+// {raw_sequence_id: 0x2, sequence: {string_value: TCA}}
+// {raw_sequence_id: 0x3, sequence: {string_value: GCA}}
+//
+// To reconstruct the sequence a client would request the
+// raw_sequence_id 0xA. This would return a message with
+// raw_sequence_ids set. The client then calls get raw
+// sequence for each of those IDs and concatenates the
+// string value to recreate the original sequence.
 
+// This message represents the raw sequence. It can be
+// used to represent sequences of arbitrary length using
+// a tree structure.
 message RawSequence {
   message Bases {
     oneof {
@@ -48,23 +57,46 @@ message RawSequence {
 
 // A sequencing event is an observation of a sequence
 // and sequences are tagged in order to interchange
-// data in a format familiar similar to FASTQ.
-
+// data in a format familiar similar to FASTQ. The Sequence
+// messages allows interchange of individual FASTQ records.
 message Sequence {
+  // The SequenceSet this Sequence belongs to.
   string sequence_set_id = 1;
+
+  // The unique identifier for this record.
   string sequence_id = 2;
+
+  // This message allows sequence data to be interchanged.
   RawSequence bases = 3;
+
+  // The computed length of the sequence.
   int64 length = 4;
-  string quality = 4;
-  bool pair = 5;
-  map<string, google.protobuf.ListValue> info = 14;
+
+  // A string representing the quality of the sequence observation.
+  string quality = 5;
+
+  // Denotes whether this record is part of a paired-read.
+  bool pair = 6;
+
+  // A map of additional tagged information about the Sequence.
+  map<string, google.protobuf.ListValue> info = 7;
 }
 
+// A Sequence Set organizes sequence observations for a given sample
+// and is akin to a FASTQ.
 message SequenceSet {
+  // The ID of the dataset this Sequence Set belongs to.
   string dataset_id = 1;
+
+  // The ID of the sample used in preparing this Sequence Set.
   string biosample_id = 2;
-  string experiment_id = 3;
-  map<string, google.protobuf.ListValue> info = 14;
+
+  // The ID of the experiment this
+  // TODO still need to include entire experiment object
+  // string experiment_id = 3;
+
+  // A map of additional information regarding a sequence set.
+  map<string, google.protobuf.ListValue> info = 4;
 }
 
 service SequenceService {
@@ -107,15 +139,18 @@ service SequenceService {
 }
 
 message SearchSequenceSetRequest {
+  // Only return sequence sets that are a part of this dataset.
   string dataset_id = 1;
+
+  // Only return sequence sets tagged with this biosample_id.
   string biosample_id = 2;
-  string experiment_id = 3;
-  int32 page_size = 2;
+
+  int32 page_size = 4;
 
   // The continuation token, which is used to page through large result sets.
   // To get the next page of results, set this parameter to the value of
   // `next_page_token` from the previous response.
-  string page_token = 3;
+  string page_token = 5;
 }
 
 message SearchSequenceSetResponse {
@@ -128,25 +163,34 @@ message SearchSequenceSetResponse {
 }
 
 message SearchSequenceRequest {
+  // Only return sequence records from the provided Sequence Set.
   string sequence_set_id = 1;
+
+  // Filter values for those that strictly match the provided sequence ID.
   string raw_sequence_id = 2;
+
+  // Only return values with a matching pair setting.
   bool pair = 3;
-  int32 page_size = 2;
+
+  int32 page_size = 4;
 
   // The continuation token, which is used to page through large result sets.
   // To get the next page of results, set this parameter to the value of
   // `next_page_token` from the previous response.
-  string page_token = 3;
+  string page_token = 5;
 }
 
 message GetSequenceSetRequest {
+  // The identifier of the sequence set requested.
   string sequence_set_id = 1;
 }
 
 message GetSequenceRequest {
+  // The identifier of the sequence requested.
   string sequence_id = 1;
 }
 
 message GetRawSequence {
+  // The identifier of the raw sequence requested.
   string raw_sequence_id = 1;
 }
