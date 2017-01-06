@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package ga4gh;
+
 import "google/protobuf/struct.proto";
 import "google/api/annotations.proto";
 
@@ -10,7 +11,7 @@ Clients can create listings of GA4GH services by requesting peer
 lists from known network participants.
 
 Network membership is voluntary, in that each peer is free to
-manage it's peer list.
+manage its peer list.
 */
 
 service PeerService {
@@ -24,7 +25,7 @@ service PeerService {
   rpc ListPeers(ListPeersRequest)
     returns (ListPeersResponse) {
       option (google.api.http) = {
-        post: "/v0.6.0a8/peers/list"
+        post: "/v0.6.0a10/peers/list"
         body: "*"
       };
     };
@@ -42,7 +43,7 @@ service PeerService {
   rpc AnnouncePeer(AnnouncePeerRequest)
     returns (AnnouncePeerResponse) {
       option (google.api.http) = {
-        post: "/v0.6.0a8/announce"
+        post: "/v0.6.0a10/announce"
       };
     };
 
@@ -55,7 +56,7 @@ service PeerService {
   rpc Info(GetInfoRequest)
     returns (GetInfoResponse) {
       option (google.api.http) = {
-        get: "/v0.6.0a8/info"
+        get: "/v0.6.0a10/info"
       };
     };
 
@@ -135,4 +136,7 @@ message Peer {
   // and a port.
   //   http://myapp.mycloudservice.com:8080/data/ga4gh
   string uri = 1;
+
+  // A map of additional information about the service can be included.
+  map<string, google.protobuf.ListValue> info = 2;
 }
