@@ -13,7 +13,7 @@ python/ga4gh/schemas/_protocol_version.py
 # Ignore proto included in the generated python package
 python/**/*.proto
 # Ignored generated protobuf bindings in the source tree
-*_pb2.py
+# *_pb2.py
 
 #********** windows template**********
 
