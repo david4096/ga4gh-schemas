@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package ga4gh;
 
-import "google/protobuf/struct.proto";
+import "ga4gh/common.proto";
 import "google/api/annotations.proto";
 
 /*
@@ -101,8 +101,8 @@ message AnnouncePeerResponse {
   bool success = 1;
 
   // Other information regarding an AnnouncePeerRequest can be sent in
-  // the info field.
-  map<string, google.protobuf.ListValue> info = 2;
+  // the attributes field.
+  Attributes attributes = 2;
 }
 
 message GetInfoRequest {
@@ -116,7 +116,7 @@ message GetInfoResponse {
   string protocol_version = 1;
 
   // A map of additional information about the service can be included.
-  map<string, google.protobuf.ListValue> info = 2;
+  Attributes attributes = 2;
 }
 
 // Peers allow clients to represent services to each other so
@@ -138,5 +138,5 @@ message Peer {
   string uri = 1;
 
   // A map of additional information about the service can be included.
-  map<string, google.protobuf.ListValue> info = 2;
+  Attributes attributes = 2;
 }
