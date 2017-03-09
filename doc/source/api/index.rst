@@ -22,7 +22,7 @@ be aligned to a reference sequence.
 .. toctree::
    reads
 
-   
+
 Variants
 @@@@@@@@
 
@@ -81,16 +81,6 @@ quantifications derived from a set of RNA reads.
 
 .. toctree::
    rna_quantifications
-
-Genotype to Phenotype
-@@@@@@@@@@@@@@@@@@@@@
-
-Genotype and phenotype data can be linked via evidence. This protocol
-provides methods for describing phenotypes and associating them
-with genomic features.
-
-.. toctree::
-   genotypephenotype
 
 
 .. _SAM/BAM: https://samtools.github.io/hts-specs/SAMv1.pdf
