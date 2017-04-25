@@ -14,8 +14,10 @@ var schemasDir = config.schema_path;
 
 var namespace = config.namespace;
 
+var root = __dirname + '/../' + schemasDir;
+
 function loadProto() {
-  return fs.readdirSync(schemasDir + '/' + namespace);
+  return fs.readdirSync(root + '/' + namespace);
 }
 
 function services() {
@@ -41,7 +43,7 @@ function loadDescriptors() {
   return filterServices().map(function(filename) {
     // FIXME there has to be a better way to include dependencies here
     // Editing the schemas paths was done ...
-    return grpc.load({root: schemasDir, file: namespace + '/' + filename});
+    return grpc.load({root: root, file: namespace + '/' + filename});
   });
 }
 
