@@ -1,0 +1,26 @@
+{
+  "name": "ga4gh-schemas",
+  "version": "1.0.0",
+  "description": ".. figure:: http://genomicsandhealth.org/files/logo_ga.png \t    :alt: Image",
+  "main": "js/index.js",
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/david4096/ga4gh-schemas.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/david4096/ga4gh-schemas/issues"
+  },
+  "homepage": "https://github.com/david4096/ga4gh-schemas#readme",
+  "dependencies": {
+    "grpc": "^1.2.4"
+  }
+}
