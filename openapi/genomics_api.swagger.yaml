@@ -941,7 +941,7 @@ definitions:
     description: |-
       Type defining a collection of attributes associated with various protocol
       records. Each attribute is a name that maps to an array of one or more
-      values. Values are chosen from both internal protobuf types and GA4GH.
+      values. Values are chosen from both default JSON schema types and GA4GH.
        Values should be split into array elements instead of using a separator
       syntax that needs to parsed.
   AttributeValueList:
@@ -1024,7 +1024,7 @@ definitions:
           the ordering of the calls on this `Variant`.
           The number of results will also be the same.
       genotype:
-        $ref: '#/definitions/protobufListValue'
+        $ref: '#/definitions/AttributeValueList'
         description: |-
           The genotype of this variant call.
 
@@ -1210,10 +1210,10 @@ definitions:
         title: |-
           A textual description of the evidence. This is used to complement the
           structured description in the evidence_type field
-      info:
+      attributes:
         type: object
         additionalProperties:
-          $ref: '#/definitions/protobufListValue'
+          $ref: '#/definitions/Attributes'
         description: Additional annotation data in key-value pairs.
     description: |-
       Evidence for the phenotype association.
@@ -1481,10 +1481,10 @@ definitions:
         title: |-
           The context in which the phenotype arises.
           Multiple contexts can be specified - these are assumed to all hold together
-      info:
+      attributes:
         type: object
         additionalProperties:
-          $ref: '#/definitions/protobufListValue'
+          $ref: '#/definitions/Attributes'
         description: Additional annotation data in key-value pairs.
     description: |-
       An association between one or more genomic features and a phenotype.
@@ -1740,10 +1740,10 @@ definitions:
       dataset_id:
         type: string
         description: The ID of the dataset this phenotype association set belongs to.
-      info:
+      attributes:
         type: object
         additionalProperties:
-          $ref: '#/definitions/protobufListValue'
+          $ref: '#/definitions/Attributes'
         description: Optional additional information for this phenotype association set.
     description: The top level container for phenotype association data.
   PhenotypeInstance:
@@ -1775,10 +1775,10 @@ definitions:
         description: |-
           A textual description of the phenotype. This is used to complement the
           structured phenotype description in the type field.
-      info:
+      attributes:
         type: object
         additionalProperties:
-          $ref: '#/definitions/protobufListValue'
+          $ref: '#/definitions/Attributes'
         description: Additional annotation data in key-value pairs.
     title: |-
       An association to a phenotype and related information.
@@ -3254,75 +3254,3 @@ definitions:
         $ref: '#/definitions/Attributes'
         description: A map of additional information about the metadata record.
     description: This metadata represents VCF header information.
-  googleprotobufNullValue:
-    type: string
-    enum:
-      - NULL_VALUE
-    default: NULL_VALUE
-    description: |-
-      `NullValue` is a singleton enumeration to represent the null value for the
-      `Value` type union.
-
-       The JSON representation for `NullValue` is JSON `null`.
-
-       - NULL_VALUE: Null value.
-  protobufListValue:
-    type: object
-    properties:
-      values:
-        type: array
-        items:
-          $ref: '#/definitions/protobufValue'
-        description: Repeated field of dynamically typed values.
-    description: |-
-      `ListValue` is a wrapper around a repeated field of values.
-
-      The JSON representation for `ListValue` is JSON array.
-  protobufStruct:
-    type: object
-    properties:
-      fields:
-        type: object
-        additionalProperties:
-          $ref: '#/definitions/protobufValue'
-        description: Unordered map of dynamically typed values.
-    description: |-
-      `Struct` represents a structured data value, consisting of fields
-      which map to dynamically typed values. In some languages, `Struct`
-      might be supported by a native representation. For example, in
-      scripting languages like JS a struct is represented as an
-      object. The details of that representation are described together
-      with the proto support for the language.
-
-      The JSON representation for `Struct` is JSON object.
-  protobufValue:
-    type: object
-    properties:
-      null_value:
-        $ref: '#/definitions/googleprotobufNullValue'
-        description: Represents a null value.
-      number_value:
-        type: number
-        format: double
-        description: Represents a double value.
-      string_value:
-        type: string
-        description: Represents a string value.
-      bool_value:
-        type: boolean
-        format: boolean
-        description: Represents a boolean value.
-      struct_value:
-        $ref: '#/definitions/protobufStruct'
-        description: Represents a structured value.
-      list_value:
-        $ref: '#/definitions/protobufListValue'
-        description: Represents a repeated `Value`.
-    description: |-
-      `Value` represents a dynamically typed value which can be either
-      null, a number, a string, a boolean, a recursive struct value, or a
-      list of values. A producer of value is expected to set one of that
-      variants, absence of any variant indicates an error.
-
-      The JSON representation for `Value` is JSON value.
-
