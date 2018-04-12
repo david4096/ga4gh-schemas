@@ -1,0 +1,3327 @@
+swagger: '2.0'
+info:
+  title: ga4gh/all.proto
+  version: version not set
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /v0.6.0a10/announce:
+    post:
+      summary: |-
+        Allows a client to notify a service of a potential peer.
+        Services are expected to log these requests and implement
+        policies for adding peers to their peer lists as desired.
+      description: |-
+        The AnnouncePeerResponse only notifies the requester whether
+        the request was valid. To find if their announce request
+        has been accepted they must make a `ListPeersRequest`.
+        `POST /peers/announce` must accept a JSON version of
+        `AnnouncePeerRequest` as the post body and will return a JSON
+        version of `AnnouncePeerResponse`.
+      operationId: AnnouncePeer
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghAnnouncePeerResponse'
+      tags:
+        - PeerService
+  /v0.6.0a10/biosamples/search:
+    post:
+      summary: |-
+        `POST /biosamples/search` must accept a JSON version of
+        `SearchBiosamplesRequest` as the post body and will return a JSON version
+        of `SearchBiosamplesResponse`.
+      operationId: SearchBiosamples
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghSearchBiosamplesResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ga4ghSearchBiosamplesRequest'
+      tags:
+        - BioMetadataService
+  '/v0.6.0a10/biosamples/{biosample_id}':
+    get:
+      summary: |-
+        Gets a `Biosample` by ID.
+        `GET /biosamples/{id}` will return a JSON version of `Biosample`.
+      operationId: GetBiosample
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghBiosample'
+      parameters:
+        - name: biosample_id
+          in: path
+          required: true
+          type: string
+      tags:
+        - BioMetadataService
+  /v0.6.0a10/callsets/search:
+    post:
+      summary: Gets a list of call sets matching the search criteria.
+      description: |-
+        `POST /callsets/search` must accept a JSON version of
+        `SearchCallSetsRequest` as the post body and will return a JSON version of
+        `SearchCallSetsResponse`.
+      operationId: SearchCallSets
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghSearchCallSetsResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ga4ghSearchCallSetsRequest'
+      tags:
+        - VariantService
+  '/v0.6.0a10/callsets/{call_set_id}':
+    get:
+      summary: Gets a `CallSet` by ID.
+      description: '`GET /callsets/{id}` will return a JSON version of `CallSet`.'
+      operationId: GetCallSet
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghCallSet'
+      parameters:
+        - name: call_set_id
+          in: path
+          required: true
+          type: string
+      tags:
+        - VariantService
+  /v0.6.0a10/datasets/search:
+    post:
+      summary: Gets a list of `Dataset` matching the search criteria.
+      description: |-
+        `POST /datasets/search` must accept a JSON version of
+        `SearchDatasetsRequest` as the post body and will return a JSON
+        version of `SearchDatasetsResponse`.
+      operationId: SearchDatasets
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghSearchDatasetsResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ga4ghSearchDatasetsRequest'
+      tags:
+        - MetadataService
+  '/v0.6.0a10/datasets/{dataset_id}':
+    get:
+      summary: Gets a `Dataset` by ID.
+      description: |-
+        `GET /datasets/{dataset_id}` will return a JSON version of
+        `Dataset`.
+      operationId: GetDataset
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghDataset'
+      parameters:
+        - name: dataset_id
+          in: path
+          required: true
+          type: string
+      tags:
+        - MetadataService
+  /v0.6.0a10/expressionlevels/search:
+    post:
+      summary: |-
+        'POST /expressionlevels/search' must accept JSON version of
+        'SearchExpressionLevelsRequest' as the post body and will return a JSON
+        version of 'SearchExpressionLevelsResponse'.
+      operationId: SearchExpressionLevels
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghSearchExpressionLevelsResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ga4ghSearchExpressionLevelsRequest'
+      tags:
+        - RnaQuantificationService
+  '/v0.6.0a10/expressionlevels/{expression_level_id}':
+    get:
+      summary: |-
+        Gets a `ExpressionLevel` by ID.
+        `GET /expressionlevels/{id}` will return a JSON version of
+        `ExpressionLevel`.
+      operationId: GetExpressionLevel
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghExpressionLevel'
+      parameters:
+        - name: expression_level_id
+          in: path
+          required: true
+          type: string
+      tags:
+        - RnaQuantificationService
+  /v0.6.0a10/featurephenotypeassociations/search:
+    post:
+      summary: |-
+        Gets a list of genotype-phenotype assoications accessible through the API.
+        `POST /featurephenotypeassociations/search` must accept a JSON version of
+        `SearchPhenotypesRequest` as the post body and will return a JSON version
+        of `SearchPhenotypeAssociationSetsResponse`.
+      operationId: SearchPhenotypeAssociations
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghSearchGenotypePhenotypeResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ga4ghSearchGenotypePhenotypeRequest'
+      tags:
+        - GenotypePhenotypeService
+  /v0.6.0a10/features/search:
+    post:
+      summary: Gets a list of `Feature` matching the search criteria.
+      description: |-
+        `POST /features/search` must accept a JSON version of
+        `SearchFeaturesRequest` as the post body and will return a JSON version of
+        `SearchFeaturesResponse`.
+      operationId: SearchFeatures
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghSearchFeaturesResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ga4ghSearchFeaturesRequest'
+      tags:
+        - SequenceAnnotationService
+  '/v0.6.0a10/features/{feature_id}':
+    get:
+      summary: Gets a `Feature` by ID.
+      description: '`GET /features/{id}` will return a JSON version of `Feature`.'
+      operationId: GetFeature
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghFeature'
+      parameters:
+        - name: feature_id
+          in: path
+          required: true
+          type: string
+      tags:
+        - SequenceAnnotationService
+  /v0.6.0a10/featuresets/search:
+    post:
+      summary: Gets a list of `FeatureSet` matching the search criteria.
+      description: |-
+        `POST /featuresets/search` must accept a JSON version of
+        `SearchFeatureSetsRequest` as the post body and will return a JSON version
+        of `SearchFeatureSetsResponse`.
+      operationId: SearchFeatureSets
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghSearchFeatureSetsResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ga4ghSearchFeatureSetsRequest'
+      tags:
+        - SequenceAnnotationService
+  '/v0.6.0a10/featuresets/{feature_set_id}':
+    get:
+      summary: Gets a `FeatureSet` by ID.
+      description: '`GET /featuresets/{id}` will return a JSON version of `FeatureSet`.'
+      operationId: GetFeatureSet
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghFeatureSet'
+      parameters:
+        - name: feature_set_id
+          in: path
+          required: true
+          type: string
+      tags:
+        - SequenceAnnotationService
+  /v0.6.0a10/individuals/search:
+    post:
+      summary: |-
+        Gets a list of Individuals accessible through the API.
+        `POST /individuals/search` must accept a JSON version of
+        `SearchIndividualsRequest` as the post body and will return a JSON version
+        of `SearchIndividualsResponse`.
+      operationId: SearchIndividuals
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghSearchIndividualsResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ga4ghSearchIndividualsRequest'
+      tags:
+        - BioMetadataService
+  '/v0.6.0a10/individuals/{individual_id}':
+    get:
+      summary: |-
+        Gets an `Individual` by ID.
+        `GET /individuals/{id}` will return a JSON version of `Individual`.
+      operationId: GetIndividual
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghIndividual'
+      parameters:
+        - name: individual_id
+          in: path
+          required: true
+          type: string
+      tags:
+        - BioMetadataService
+  /v0.6.0a10/info:
+    get:
+      summary: |-
+        Provides peers with a way to identify the protocol version
+        of a peer. Other information describing the service can
+        be included in the `info` field of the `GetInfoResponse`.
+      description: |-
+        `GET /info` will return a JSON version of `GetInfoResponse`.
+        and does not require any parameters.
+      operationId: Info
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghGetInfoResponse'
+      tags:
+        - PeerService
+  /v0.6.0a10/peers/list:
+    post:
+      summary: |-
+        Gets a list of `Peer` messages that are being managed by the
+        service. If the peer list becomes very long it is spread
+        across multiple pages.
+      description: |-
+        `POST /peers/list` must accept a JSON version of
+        `ListPeersRequest` as the post body and will return a JSON
+        version of `ListPeersResponse`.
+      operationId: ListPeers
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghListPeersResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ga4ghListPeersRequest'
+      tags:
+        - PeerService
+  /v0.6.0a10/phenotypeassociationsets/search:
+    post:
+      summary: |-
+        Gets a list of association sets accessible through the API.
+        `POST /phenotypeassociationsets/search` must accept a JSON version of
+        `SearchPhenotypeAssociationSetsRequest` as the post body and will return a JSON version
+        of `SearchPhenotypeAssociationSetsResponse`.
+      operationId: SearchPhenotypeAssociationSets
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghSearchPhenotypeAssociationSetsResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ga4ghSearchPhenotypeAssociationSetsRequest'
+      tags:
+        - GenotypePhenotypeService
+  /v0.6.0a10/phenotypes/search:
+    post:
+      summary: |-
+        Gets a list of phenotypes accessible through the API.
+        `POST /phenotypes/search` must accept a JSON version of
+        `SearchPhenotypesRequest` as the post body and will return a JSON version
+        of `SearchPhenotypeAssociationSetsResponse`.
+      operationId: SearchPhenotype
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghSearchPhenotypesResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ga4ghSearchPhenotypesRequest'
+      tags:
+        - GenotypePhenotypeService
+  /v0.6.0a10/references/search:
+    post:
+      summary: Gets a list of `Reference` matching the search criteria.
+      description: |-
+        `POST /references/search` must accept a JSON version of
+        `SearchReferencesRequest` as the post body and will return a JSON
+        version of `SearchReferencesResponse`.
+      operationId: SearchReferences
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghSearchReferencesResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ga4ghSearchReferencesRequest'
+      tags:
+        - ReferenceService
+  '/v0.6.0a10/references/{reference_id}':
+    get:
+      summary: Gets a `Reference` by ID.
+      description: |-
+        `GET /references/{reference_id}` will return a JSON version of
+        `Reference`.
+      operationId: GetReference
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghReference'
+      parameters:
+        - name: reference_id
+          in: path
+          required: true
+          type: string
+      tags:
+        - ReferenceService
+  '/v0.6.0a10/references/{reference_id}/bases':
+    post:
+      summary: Lists `Reference` bases by ID and optional range.
+      description: |-
+        `POST /listreferencebases` will return a JSON version of
+        `ListReferenceBasesResponse`.
+      operationId: ListReferenceBases
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghListReferenceBasesResponse'
+      parameters:
+        - name: reference_id
+          in: path
+          required: true
+          type: string
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ga4ghListReferenceBasesRequest'
+      tags:
+        - ReferenceService
+  /v0.6.0a10/referencesets/search:
+    post:
+      summary: Gets a list of `ReferenceSet` matching the search criteria.
+      description: |-
+        `POST /referencesets/search` must accept a JSON version of
+        `SearchReferenceSetsRequest` as the post body and will return a JSON
+        version of `SearchReferenceSetsResponse`.
+      operationId: SearchReferenceSets
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghSearchReferenceSetsResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ga4ghSearchReferenceSetsRequest'
+      tags:
+        - ReferenceService
+  '/v0.6.0a10/referencesets/{reference_set_id}':
+    get:
+      summary: Gets a `ReferenceSet` by ID.
+      description: |-
+        `GET /referencesets/{reference_set_id}` will return a JSON version of
+        `ReferenceSet`.
+      operationId: GetReferenceSet
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghReferenceSet'
+      parameters:
+        - name: reference_set_id
+          in: path
+          required: true
+          type: string
+      tags:
+        - ReferenceService
+  /v0.6.0a10/rnaquantifications/search:
+    post:
+      summary: |-
+        Gets a list of 'RnaQuantification' matching the search criteria.
+        'POST /rnaquantifications/search' must accept JSON version of
+        'SearchRnaQuantificationsRequest' as the post body and will return a JSON
+        version of 'SearchRnaQuantificationResponse'.
+      operationId: SearchRnaQuantifications
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghSearchRnaQuantificationsResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ga4ghSearchRnaQuantificationsRequest'
+      tags:
+        - RnaQuantificationService
+  '/v0.6.0a10/rnaquantifications/{rna_quantification_id}':
+    get:
+      summary: |-
+        Gets a `RnaQuantification` by ID.
+        `GET /rnaquantifications/{id}` will return a JSON version of
+        `RnaQuantification`.
+      operationId: GetRnaQuantification
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghRnaQuantification'
+      parameters:
+        - name: rna_quantification_id
+          in: path
+          required: true
+          type: string
+      tags:
+        - RnaQuantificationService
+  /v0.6.0a10/rnaquantificationsets/search:
+    post:
+      summary: |-
+        Gets a list of 'RnaQuantificationSet' matching the search criteria.
+        'POST /rnaquantificationsets/search' must accept JSON version of
+        'SearchRnaQuantificationSetRequest' as the post body and will return a JSON
+        version of 'SearchRnaQuantificationSetResponse'.
+      operationId: SearchRnaQuantificationSets
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghSearchRnaQuantificationSetsResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ga4ghSearchRnaQuantificationSetsRequest'
+      tags:
+        - RnaQuantificationService
+  '/v0.6.0a10/rnaquantificationsets/{rna_quantification_set_id}':
+    get:
+      summary: |-
+        Gets a `RnaQuantificationSet` by ID.
+        `GET /rnaquantificationsets/{id}` will return a JSON version of
+        `RnaQuantificationSet`.
+      operationId: GetRnaQuantificationSet
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghRnaQuantificationSet'
+      parameters:
+        - name: rna_quantification_set_id
+          in: path
+          required: true
+          type: string
+      tags:
+        - RnaQuantificationService
+  /v0.6.0a10/variantannotations/search:
+    post:
+      summary: Gets a list of `VariantAnnotation` messages matching the search criteria.
+      description: |-
+        This allows the mining of allele-specific annotations on a VariantSet by
+        either a region or by a set of genomic features. Where a region is supplied
+        annotation of all alleles vs all features in the region is returned. Where
+        a set of features is supplied, only annotations against these features
+        (matching on featuretype and id) are returned and other overlapping
+        features are ignored.
+
+        `variantannotationsets/search` returns information on the input to the
+        annotation. This will be a VariantSet and the reference data and software
+        versions used in calculating the annotation. It is essential this
+        information is exhaustive.
+
+        `POST /variantannotations/search` must accept a JSON version of
+        `SearchVariantAnnotationsRequest` as the post body and will return a JSON
+        version of `SearchVariantAnnotationsResponse`.
+      operationId: SearchVariantAnnotations
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghSearchVariantAnnotationsResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ga4ghSearchVariantAnnotationsRequest'
+      tags:
+        - AlleleAnnotationService
+  /v0.6.0a10/variantannotationsets/search:
+    post:
+      summary: Returns a list of available variant annotation sets.
+      description: |-
+        `POST /variantannotationsets/search` must accept a JSON version of
+        `SearchVariantAnnotationSetsRequest` as the post body and will return a
+        JSON version of `SearchVariantAnnotationSetsResponse`.
+      operationId: SearchVariantAnnotationSets
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghSearchVariantAnnotationSetsResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ga4ghSearchVariantAnnotationSetsRequest'
+      tags:
+        - AlleleAnnotationService
+  '/v0.6.0a10/variantannotationsets/{variant_annotation_set_id}':
+    get:
+      summary: Gets an `VariantAnnotationSet` by ID.
+      description: |-
+        `GET /variantannotationsets/{variant_annotation_set_id}` will return a JSON
+        version of `VariantAnnotationSet`.
+      operationId: GetVariantAnnotationSet
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghVariantAnnotationSet'
+      parameters:
+        - name: variant_annotation_set_id
+          in: path
+          required: true
+          type: string
+      tags:
+        - AlleleAnnotationService
+  /v0.6.0a10/variants/search:
+    post:
+      summary: Gets a list of `Variant` matching the search criteria.
+      description: |-
+        `POST /variants/search` must accept a JSON version of
+        `SearchVariantsRequest` as the post body and will return a JSON version of
+        `SearchVariantsResponse`.
+      operationId: SearchVariants
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghSearchVariantsResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ga4ghSearchVariantsRequest'
+      tags:
+        - VariantService
+  '/v0.6.0a10/variants/{variant_id}':
+    post:
+      summary: Gets a `Variant` by ID.
+      description: '`GET /variants/{id}` will return a JSON version of `Variant`.'
+      operationId: GetVariant
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghVariant'
+      parameters:
+        - name: variant_id
+          in: path
+          required: true
+          type: string
+      tags:
+        - VariantService
+  /v0.6.0a10/variantsets/search:
+    post:
+      summary: Gets a list of `VariantSet` matching the search criteria.
+      description: |-
+        `POST /variantsets/search` must accept a JSON version of
+        `SearchVariantSetsRequest` as the post body and will return a JSON version
+        of `SearchVariantSetsResponse`.
+      operationId: SearchVariantSets
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghSearchVariantSetsResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ga4ghSearchVariantSetsRequest'
+      tags:
+        - VariantService
+  '/v0.6.0a10/variantsets/{variant_set_id}':
+    get:
+      summary: Gets a `VariantSet` by ID.
+      description: |-
+        `GET /variantsets/{variant_set_id}` will return a JSON version of
+        `VariantSet`.
+      operationId: GetVariantSet
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghVariantSet'
+      parameters:
+        - name: variant_set_id
+          in: path
+          required: true
+          type: string
+      tags:
+        - VariantService
+  /v0.6.0a8/continuous/search:
+    post:
+      summary: Gets continuous values matching the search criteria.
+      description: |-
+        `POST /continuous/search` must accept a JSON version of
+        `SearchContinuousRequest` as the post body and will return a JSON version
+        of `SearchContinuousResponse`.
+      operationId: SearchContinuous
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghSearchContinuousResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ga4ghSearchContinuousRequest'
+      tags:
+        - SequenceAnnotationService
+  /v0.6.0a8/continuoussets/search:
+    post:
+      summary: Gets a list of `ContinuousSet` matching the search criteria.
+      description: |-
+        `POST /continuoussets/search` must accept a JSON version of
+        `SearchContinuousSetsRequest` as the post body and will return a JSON
+        version of `SearchContinuousSetsResponse`.
+      operationId: SearchContinuousSets
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghSearchContinuousSetsResponse'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ga4ghSearchContinuousSetsRequest'
+      tags:
+        - SequenceAnnotationService
+  '/v0.6.0a8/continuoussets/{continuous_set_id}':
+    get:
+      summary: Gets a `ContinuousSet` by ID.
+      description: '`GET /continuoussets/{id}` will return a JSON version of `ContinuousSet`.'
+      operationId: GetContinuousSet
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ga4ghContinuousSet'
+      parameters:
+        - name: continuous_set_id
+          in: path
+          required: true
+          type: string
+      tags:
+        - SequenceAnnotationService
+definitions:
+  ga4ghAge:
+    type: object
+    properties:
+      age:
+        type: string
+        title: |-
+          The :ref:`ISO 8601<metadata_date_time>` age of this object as ISO8601
+          duration or time intervals. The use of time intervals makes an additional
+          anchor unnecessary (i.e. DOB and age can be represented as start-anchored
+          time interval, e.g. 1967-11-21/P40Y10M05D)
+          TODO: Anonymous reference time attribute/pointer?
+      age_class:
+        $ref: '#/definitions/ga4ghOntologyTerm'
+        title: |-
+          An age class, e.g. corresponding to the use of "age of onset" in HPO.
+          HPO is recommended, for example, subclasses of
+          http://purl.obolibrary.org/obo/HP_0003674
+          Example:
+           age_class : { term_id : "HP:0003596", term : "Middle age onset" }
+  ga4ghAlleleLocation:
+    type: object
+    properties:
+      start:
+        type: integer
+        format: int32
+        title: Relative start position of the allele in this coordinate system
+      end:
+        type: integer
+        format: int32
+        title: Relative end position of the allele in this coordinate system
+      reference_sequence:
+        type: string
+        title: Reference sequence in feature (this should be the codon at CDS level)
+      alternate_sequence:
+        type: string
+        title: Alternate sequence in feature (this should be the codon at CDS level)
+    title: |-
+      An allele location record holds the location of an allele relative to a non -
+      genomic coordinate system such as a CDS or protein and holds the reference
+      and alternate sequence where appropriate
+  ga4ghAnalysis:
+    type: object
+    properties:
+      id:
+        type: string
+        description: |-
+          Formats of id | name | description | accessions are described in the
+          documentation on general attributes and formats.
+      name:
+        type: string
+      description:
+        type: string
+      created:
+        type: string
+        description: 'The time at which this record was created, in ISO 8601 format.'
+      updated:
+        type: string
+        description: 'The time at which this record was last updated, in ISO 8601 format.'
+      type:
+        type: string
+        description: The type of analysis.
+      software:
+        type: array
+        items:
+          type: string
+        description: The software run to generate this analysis.
+      attributes:
+        $ref: '#/definitions/ga4ghAttributes'
+        description: A map of additional analysis information.
+    description: |-
+      An analysis contains an interpretation of one or several experiments. (e.g.
+      SNVs, copy number variations, methylation status) together with information
+      about the methodology used.
+  ga4ghAnalysisResult:
+    type: object
+    properties:
+      analysis_id:
+        type: string
+        title: The ID of the analysis record for this result
+      result:
+        type: string
+        title: The text-based result for this analysis
+      score:
+        type: integer
+        format: int32
+        title: The numeric score for this analysis
+    description: |-
+      An AnalysisResult record holds the output of a prediction package such as
+      SIFT on a specific allele.
+  ga4ghAnnouncePeerResponse:
+    type: object
+    properties:
+      success:
+        type: boolean
+        format: boolean
+        description: |-
+          This message notifies the client whether the AnnouncePeerRequest
+          was well formed.
+      attributes:
+        $ref: '#/definitions/ga4ghAttributes'
+        description: |-
+          Other information regarding an AnnouncePeerRequest can be sent in
+          the attributes field.
+    description: This is the response from `POST /peers/announce`.
+  ga4ghAttributeValue:
+    type: object
+    properties:
+      string_value:
+        type: string
+      int64_value:
+        type: string
+        format: int64
+      int32_value:
+        type: integer
+        format: int32
+      bool_value:
+        type: boolean
+        format: boolean
+      double_value:
+        type: number
+        format: double
+      external_identifier:
+        $ref: '#/definitions/ga4ghExternalIdentifier'
+      ontology_term:
+        $ref: '#/definitions/ga4ghOntologyTerm'
+      experiment:
+        $ref: '#/definitions/ga4ghExperiment'
+      program:
+        $ref: '#/definitions/ga4ghProgram'
+      analysis:
+        $ref: '#/definitions/ga4ghAnalysis'
+      null_value:
+        $ref: '#/definitions/ga4ghNullValue'
+      attributes:
+        $ref: '#/definitions/ga4ghAttributes'
+      attribute_list:
+        $ref: '#/definitions/ga4ghAttributeValueList'
+    description: |-
+      Type defining a collection of attributes associated with various protocol
+      records. Each attribute is a name that maps to an array of one or more
+      values. Values are chosen from both internal protobuf types and GA4GH.
+       Values should be split into array elements instead of using a separator
+      syntax that needs to parsed.
+  ga4ghAttributeValueList:
+    type: object
+    properties:
+      values:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghAttributeValue'
+  ga4ghAttributes:
+    type: object
+    properties:
+      attr:
+        type: object
+        additionalProperties:
+          $ref: '#/definitions/ga4ghAttributeValueList'
+  ga4ghBiosample:
+    type: object
+    properties:
+      id:
+        type: string
+        description: |-
+          The Biosample :ref:`id <apidesign_object_ids>`. This is unique in the
+          context of the server instance.
+      dataset_id:
+        type: string
+        description: The ID of the dataset this Biosample belongs to.
+      name:
+        type: string
+        description: The Biosample's name This is a label or symbolic identifier for the biosample.
+      description:
+        type: string
+        description: |-
+          The biosample's description. This attribute contains human readable text.
+          The "description" attributes should not contain any structured data.
+      disease:
+        $ref: '#/definitions/ga4ghOntologyTerm'
+        description: OntologyTerm describing the primary disease associated with this Biosample.
+      created:
+        type: string
+        description: |-
+          The :ref:`ISO 8601<metadata_date_time>` time at which this Biosample record
+          was created.
+      updated:
+        type: string
+        description: |-
+          The :ref:`ISO 8601<metadata_date_time>` time at which this Biosample record was 
+          updated.
+      individual_id:
+        type: string
+        description: The individual this biosample was derived from.
+      attributes:
+        $ref: '#/definitions/ga4ghAttributes'
+        description: A map of additional information about the Biosample.
+      individual_age_at_collection:
+        $ref: '#/definitions/ga4ghAge'
+        description: |-
+          An age object describing the age of the individual this biosample was
+          derived from at the time of collection. The Age object allows the encoding
+          of the age either as ISO8601 duraion or time interval (preferred), or
+          as ontology term object.
+  ga4ghCall:
+    type: object
+    properties:
+      call_set_name:
+        type: string
+        description: |-
+          The name of the call set this variant call belongs to.
+          If this field is not present, the ordering of the call sets from a
+          `SearchCallSetsRequest` over this `VariantSet` is guaranteed to match
+          the ordering of the calls on this `Variant`.
+          The number of results will also be the same.
+      call_set_id:
+        type: string
+        description: |-
+          The ID of the call set this variant call belongs to.
+
+          If this field is not present, the ordering of the call sets from a
+          `SearchCallSetsRequest` over this `VariantSet` is guaranteed to match
+          the ordering of the calls on this `Variant`.
+          The number of results will also be the same.
+      genotype:
+        $ref: '#/definitions/protobufListValue'
+        description: |-
+          The genotype of this variant call.
+
+          A 0 value represents the reference allele of the associated `Variant`. Any
+          other value is a 1-based index into the alternate alleles of the associated
+          `Variant`.
+
+          If a variant had a referenceBases field of "T", an alternateBases
+          value of ["A", "C"], and the genotype was [2, 1], that would mean the call
+          represented the heterozygous value "CA" for this variant. If the genotype
+          was instead [0, 1] the represented value would be "TA". Ordering of the
+          genotype values is important if the phaseset field is present.
+          Missing genotype genotypes may be indicated using the "dot annotation" [".", "."],
+          as specified in VCF4.2; this is e.g. used for types of structural variants.
+      phaseset:
+        type: string
+        description: |-
+          If this field is populated, this variant call's genotype ordering implies
+          the phase of the bases and is consistent with any other variant calls on
+          the same contig which have the same phaseset string.
+      genotype_likelihood:
+        type: array
+        items:
+          type: number
+          format: double
+        description: |-
+          The genotype likelihoods for this variant call. Each array entry
+          represents how likely a specific genotype is for this call as
+          log10(P(data | genotype)), analogous to the GL tag in the VCF spec. The
+          value ordering is defined by the GL tag in the VCF spec.
+      attributes:
+        $ref: '#/definitions/ga4ghAttributes'
+        description: A map of additional information about the Call.
+    description: |-
+      A `Call` represents the determination of genotype with respect to a
+      particular `Variant`.
+
+      It may include associated information such as quality
+      and phasing. For example, a call might assign a probability of 0.32 to
+      the occurrence of a SNP named rs1234 in a call set with the name NA12345.
+  ga4ghCallSet:
+    type: object
+    properties:
+      id:
+        type: string
+        description: The call set ID.
+      name:
+        type: string
+        description: The call set name.
+      biosample_id:
+        type: string
+        description: The Biosample the call set data was generated from.
+      variant_set_ids:
+        type: array
+        items:
+          type: string
+        description: The IDs of the variant sets this call set has calls in.
+      created:
+        type: string
+        format: int64
+        description: The date this call set was created in milliseconds from the epoch.
+      updated:
+        type: string
+        format: int64
+        description: |-
+          The time at which this call set was last updated in
+          milliseconds from the epoch.
+      attributes:
+        $ref: '#/definitions/ga4ghAttributes'
+        description: A map of additional information about the Call Set.
+    description: |-
+      A CallSet is a collection of calls that were generated by the same analysis
+      of the same sample.
+  ga4ghContinuous:
+    type: object
+    properties:
+      start:
+        type: string
+        format: int64
+        description: |-
+          The start position at which this signal occurs (0-based). This
+          corresponds to the first base of the string of reference bases. Genomic
+          positions are non-negative integers less than the reference length.
+      values:
+        type: array
+        items:
+          type: number
+          format: double
+        description: The contiguous data values. Unsampled bases are given as NaN.
+      continuous_set_id:
+        type: string
+        description: Identifier for the containing continous set.
+      reference_name:
+        type: string
+        description: The reference on which this signal is defined (e.g. `chr20` or `X`).
+    description: |-
+      This message defines a format for exchanging continuous valued signal data,
+      such as those produced experimentally (e.g. ChIP-Seq data) or through 
+      calculations (e.g. conservation scores). It can be used, for example,
+      to share data from Wiggle, BigWig, and BedGraph sources.
+  ga4ghContinuousSet:
+    type: object
+    properties:
+      id:
+        type: string
+        description: The ID of this annotation set.
+      dataset_id:
+        type: string
+        description: The ID of the dataset this annotation set belongs to.
+      reference_set_id:
+        type: string
+        description: |-
+          The ID of the reference set which defines the coordinate-space for this
+          set of annotations.
+      name:
+        type: string
+        description: The display name for this annotation set.
+      source_uri:
+        type: string
+        description: |-
+          The source URI describing the file from which this annotation set was
+          generated, if any.
+      attributes:
+        $ref: '#/definitions/ga4ghAttributes'
+        description: A map of additional Feature Set information.
+    description: |-
+      A set of Continous messages. Continuous values can be sent
+      as a single Continuous message containing all values or a series
+      of Continuous messages to either limit the size of the values array
+      or to skip NaN values.
+  ga4ghDataset:
+    type: object
+    properties:
+      id:
+        type: string
+        description: 'The dataset''s id, locally unique to the server instance.'
+      name:
+        type: string
+        description: The name of the dataset.
+      description:
+        type: string
+        description: 'Additional, human-readable information on the dataset.'
+      attributes:
+        $ref: '#/definitions/ga4ghAttributes'
+        description: A map of additional dataset information.
+    description: |-
+      A Dataset is a collection of related data of multiple types.
+      Data providers decide how to group data into datasets.
+      See [Metadata API](../api/metadata.html) for a more detailed discussion.
+  ga4ghEnvironmentalContext:
+    type: object
+    properties:
+      id:
+        type: string
+        description: The Environment ID.
+      environment_type:
+        $ref: '#/definitions/ga4ghOntologyTerm'
+        title: |-
+          Examples of some environment types could be drawn from:
+          Ontology for Biomedical Investigations (OBI): http://purl.obofoundry.org/obo/obi/browse
+          Chemical Entities of Interest (ChEBI): http://www.ontobee.org/browser/index.php?o=chebi
+          Environment Ontology (ENVO):  http://www.ontobee.org/browser/index.php?o=ENVO
+          Anatomy (Uberon): http://www.ontobee.org/browser/index.php?o=uberon
+      description:
+        type: string
+        title: |-
+          A textual description of the environment. This is used to complement
+          the structured description in the environmentType field
+    description: |-
+      The context in which a genotype gives rise to a phenotype.
+      This is fairly open-ended; as a stub we have a simple ontology term.
+      For example, a controlled term for a drug, or perhaps an instance of a
+      complex environment including temperature and air quality, or perhaps
+      the anatomical environment (gut vs tissue type vs whole organism).
+  ga4ghEvidence:
+    type: object
+    properties:
+      evidence_type:
+        $ref: '#/definitions/ga4ghOntologyTerm'
+        title: ECO or OBI is recommended
+      description:
+        type: string
+        title: |-
+          A textual description of the evidence. This is used to complement the
+          structured description in the evidence_type field
+      info:
+        type: object
+        additionalProperties:
+          $ref: '#/definitions/protobufListValue'
+        description: Additional annotation data in key-value pairs.
+    description: |-
+      Evidence for the phenotype association.
+      This is also a stub for further expansion.  We should consider moving this into
+      it's own schema.
+  ga4ghEvidenceQuery:
+    type: object
+    properties:
+      evidenceType:
+        $ref: '#/definitions/ga4ghOntologyTerm'
+        title: ECO or OBI is recommended
+      description:
+        type: string
+        title: 'The system may support regex. https://www.w3.org/TR/xpath-functions/#regex-syntax'
+      external_identifiers:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghExternalIdentifier'
+        title: Only match Evidence messages that have any of these external identifiers
+    description: Evidence for the phenotype association.
+  ga4ghExperiment:
+    type: object
+    properties:
+      id:
+        type: string
+        title: The experiment ID
+      name:
+        type: string
+        description: The name of the experiment.
+      description:
+        type: string
+        description: A description of the experiment.
+      message_create_time:
+        type: string
+        title: |-
+          The time at which this message was created.
+          Format: ISO 8601, YYYY-MM-DDTHH:MM:SS.SSS (e.g. 2015-02-10T00:03:42.123Z)
+      message_update_time:
+        type: string
+        title: |-
+          The time at which this message was last updated.
+          Format: ISO 8601, YYYY-MM-DDTHH:MM:SS.SSS (e.g. 2015-02-10T00:03:42.123Z)
+      run_time:
+        type: string
+        title: |-
+          The time at which this experiment was performed.
+          Granularity here is variable (e.g. date only).
+          Format: ISO 8601, YYYY-MM-DDTHH:MM:SS (e.g. 2015-02-10T00:03:42)
+      molecule:
+        type: string
+        title: 'The molecule examined in this experiment. (e.g. genomics DNA, total RNA)'
+      strategy:
+        type: string
+        title: |-
+          The experiment technique or strategy applied to the sample.
+          (e.g. whole genome sequencing, RNA-seq, RIP-seq)
+      selection:
+        type: string
+        title: |-
+          The method used to enrich the target. (e.g. immunoprecipitation, size
+          fractionation, MNase digestion)
+      library:
+        type: string
+        description: The name of the library used as part of this experiment.
+      library_layout:
+        type: string
+        description: The configuration of sequenced reads. (e.g. Single or Paired).
+      instrument_model:
+        type: string
+        description: |-
+          The instrument model used as part of this experiment.
+          This maps to sequencing technology in BAM.
+      instrument_data_file:
+        type: string
+        title: |-
+          The data file generated by the instrument.
+          TODO: This isn't actually a file is it?
+          Should this be `instrumentData` instead?
+      sequencing_center:
+        type: string
+        description: The sequencing center used as part of this experiment.
+      platform_unit:
+        type: string
+        description: |-
+          The platform unit used as part of this experiment. This is a
+          flowcell-barcode
+          or slide unique identifier.
+      attributes:
+        $ref: '#/definitions/ga4ghAttributes'
+        description: A map of additional experiment information.
+    description: An experimental preparation of a sample.
+  ga4ghExpressionLevel:
+    type: object
+    properties:
+      id:
+        type: string
+        title: Expression ID
+      name:
+        type: string
+        title: Name
+      rna_quantification_id:
+        type: string
+        title: The associated RnaQuantification
+      raw_read_count:
+        type: number
+        format: float
+        description: The number of reads mapped to this feature.
+      expression:
+        type: number
+        format: float
+        description: Numerical expression value.
+      is_normalized:
+        type: boolean
+        format: boolean
+        description: True if the expression value is a normalized value.
+      units:
+        $ref: '#/definitions/ga4ghExpressionUnit'
+        description: The units of the expression value if one is given.
+      score:
+        type: number
+        format: float
+        description: Weighted score for the expression value.
+      conf_interval_low:
+        type: number
+        format: float
+        description: Lower bound of the confidence interval on the expression value.
+      conf_interval_high:
+        type: number
+        format: float
+        description: Upper bound of the confidence interval on the expression value.
+      attributes:
+        $ref: '#/definitions/ga4ghAttributes'
+        description: A map of additional information about the Expression Level.
+    description: The actual numerical quantification for each feature.
+  ga4ghExpressionUnit:
+    type: string
+    enum:
+      - EXPRESSION_UNIT_UNSPECIFIED
+      - FPKM
+      - TPM
+    default: EXPRESSION_UNIT_UNSPECIFIED
+  ga4ghExternalIdentifier:
+    type: object
+    properties:
+      database:
+        type: string
+        description: 'The source of the identifier, e.g. `Ensembl`.'
+      identifier:
+        type: string
+        description: 'The ID defined by the external database, e.g. `ENST00000000000`.'
+      version:
+        type: string
+        description: 'The version of the object or the database, e.g. `78`.'
+    title: Identifier from a public database
+  ga4ghFeature:
+    type: object
+    properties:
+      id:
+        type: string
+        description: Id of this annotation node.
+      name:
+        type: string
+        description: An optional name to provide for the feature.
+      gene_symbol:
+        type: string
+        description: |-
+          The gene symbol the feature occurs on. This field may be
+          replaced with a more generic representation in a future version.
+      parent_id:
+        type: string
+        description: Parent Id of this node. Set to empty string if node has no parent.
+      child_ids:
+        type: array
+        items:
+          type: string
+        description: |-
+          Ordered array of Child Ids of this node. Since not all child nodes are
+          ordered by genomic coordinates, this can't always be reconstructed from
+          parent_id's of the children alone.
+      feature_set_id:
+        type: string
+        description: Identifier for the containing feature set.
+      reference_name:
+        type: string
+        description: The reference on which this feature occurs (e.g. `chr20` or `X`).
+      start:
+        type: string
+        format: int64
+        description: |-
+          The start position at which this feature occurs (0-based). This
+          corresponds to the first base of the string of reference bases. Genomic
+          positions are non-negative integers less than reference length. Features
+          spanning the join of circular genomes are represented as two features one
+          on each side of the join (position 0).
+      end:
+        type: string
+        format: int64
+        description: |-
+          The end position (exclusive), resulting in [start, end) closed-open
+          interval. This is typically calculated by `start +
+          reference_bases.length`.
+      strand:
+        $ref: '#/definitions/ga4ghStrand'
+        description: The strand on which the feature is present.
+      feature_type:
+        $ref: '#/definitions/ga4ghOntologyTerm'
+        description: |-
+          Feature that is annotated by this region.  Normally, this will be a term
+          in the Sequence Ontology.
+      attributes:
+        $ref: '#/definitions/ga4ghAttributes'
+        description: |-
+          Name/value attributes of the annotation.  Attribute names follow the GFF3
+          naming convention of reserved names starting with an upper cases character,
+          and user-define names start with lower-case.  Most GFF3 pre-defined
+          attributes apply, the exceptions are ID and Parent, which are defined as
+          fields. Additional, the following attributes are added:
+            * Score - the GFF3 score column
+            * Phase - the GFF3 phase column for CDS features.
+    description: |-
+      Node in the annotation graph that annotates a contiguous region of a
+      sequence.
+  ga4ghFeaturePhenotypeAssociation:
+    type: object
+    properties:
+      id:
+        type: string
+        description: A unique identifier for the association.
+      phenotype_association_set_id:
+        type: string
+        description: |-
+          The ID of the PhenotypeAssociationSet this FeaturePhenotypeAssociation
+          belongs to.
+      feature_ids:
+        type: array
+        items:
+          type: string
+        description: |-
+          The set of features of the organism that bears the phenotype.
+          This could be as complete as a full complement of variants,
+          or as minimal as the confirmed variants that are known causation
+          for the annotated phenotype.
+          Examples of features could be variations at the nucleotide level,
+          large rearrangements at the chromosome level, or relevant epigenetic
+          markers.  Relevant genomic feature types are suggested to be
+          those typed in the Sequence Ontology (SO).
+          The feature set can have only one item, and must not be null.
+      evidence:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghEvidence'
+        description: |-
+          The evidence for this specific instance of association between the
+          features and the phenotype.
+      phenotype:
+        $ref: '#/definitions/ga4ghPhenotypeInstance'
+        description: The phenotypic component of this association.
+      description:
+        type: string
+        description: A textual description of the association.
+      environmental_contexts:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghEnvironmentalContext'
+        title: |-
+          The context in which the phenotype arises.
+          Multiple contexts can be specified - these are assumed to all hold together
+      info:
+        type: object
+        additionalProperties:
+          $ref: '#/definitions/protobufListValue'
+        description: Additional annotation data in key-value pairs.
+    description: |-
+      An association between one or more genomic features and a phenotype.
+      The instance of association allows us to link a feature to a phenotype,
+      multiple times, each bearing potentially different levels of confidence,
+      such as resulting from alternative experiments and analysis.
+  ga4ghFeatureSet:
+    type: object
+    properties:
+      id:
+        type: string
+        description: The ID of this annotation set.
+      dataset_id:
+        type: string
+        description: The ID of the dataset this annotation set belongs to.
+      reference_set_id:
+        type: string
+        description: |-
+          The ID of the reference set which defines the coordinate-space for this
+          set of annotations.
+      name:
+        type: string
+        description: The display name for this annotation set.
+      source_uri:
+        type: string
+        description: |-
+          The source URI describing the file from which this annotation set was
+          generated, if any.
+      attributes:
+        $ref: '#/definitions/ga4ghAttributes'
+        description: A map of additional Feature Set information.
+    description: A set of sequence features annotations.
+  ga4ghGetInfoResponse:
+    type: object
+    properties:
+      protocol_version:
+        type: string
+        description: |-
+          The string of the protocol version offered by the service. For
+          example, "0.6.0a10".
+      attributes:
+        $ref: '#/definitions/ga4ghAttributes'
+        description: A map of additional information about the service can be included.
+    description: This is the response from `GET /info`.
+  ga4ghHGVSAnnotation:
+    type: object
+    properties:
+      genomic:
+        type: string
+      transcript:
+        type: string
+      protein:
+        type: string
+    description: |-
+      A HGVSAnnotation record holds Human Genome Variation Society descriptions of
+      the sequence change with respect to genomic, transcript and protein
+      sequences. See: http:// www.hgvs.org/mutnomen/recs.html.
+      Descriptions should be provided at genomic level
+       - Descriptions at transcript level should be provided when the allele
+         lies within a transcript
+       - Descriptions at protein level should be provided when the allele
+         lies within the translated sequence or stop codon.
+  ga4ghIndividual:
+    type: object
+    properties:
+      id:
+        type: string
+        description: |-
+          The Individual's :ref:`id <apidesign_object_ids>`. This is unique in the
+          context of the server instance.
+      dataset_id:
+        type: string
+        description: The ID of the dataset this Individual belongs to.
+      name:
+        type: string
+        description: The Individual's name. This is a label or symbolic identifier for the individual.
+      description:
+        type: string
+        description: |-
+          The Individual's description. This attribute contains human readable text.
+          The "description" attributes should not contain any structured data.
+      created:
+        type: string
+        description: |-
+          The :ref:`ISO 8601<metadata_date_time>` time at which this Individual's record
+          was created.
+      updated:
+        type: string
+        description: |-
+          The :ref:`ISO 8601<metadata_date_time>` time at which this Individual record
+          was updated.
+      species:
+        $ref: '#/definitions/ga4ghOntologyTerm'
+        title: |-
+          For a representation of an NCBI Taxon ID as an OntologyTerm, see
+          NCBITaxon Ontology
+            http://www.obofoundry.org/ontology/ncbitaxon.html
+          For example, 'Homo sapiens' has the ID 9606. The NCBITaxon ontology ID for
+          this is NCBITaxon:9606, and therefore:
+            species : { term_id: "NCBITaxon:9606", term : "Homo sapiens" }
+      sex:
+        $ref: '#/definitions/ga4ghOntologyTerm'
+        title: |-
+          The genetic sex of this individual.
+          Use `null` when unknown or not applicable.
+          Recommended: PATO http://purl.obolibrary.org/obo/PATO_0020000 ...
+          Example:
+            sex : { term_id: "PATO:0020000", term : "female genetic sex" }
+      attributes:
+        $ref: '#/definitions/ga4ghAttributes'
+        description: A map of additional information regarding the Individual.
+  ga4ghListPeersRequest:
+    type: object
+    properties:
+      page_size:
+        type: integer
+        format: int32
+        description: |-
+          Specifies the maximum number of results to return in a single page. If
+          unspecified, a system default will be used.
+      page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          To get the next page of results, set this parameter to the value of
+          `next_page_token` from the previous response.
+    description: This request maps to the body of `POST /peers/list`.
+  ga4ghListPeersResponse:
+    type: object
+    properties:
+      peers:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghPeer'
+        description: |-
+          The list of `Peer` messages presented by the server. They
+          are not expected in any particular order.
+      next_page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          Provide this value in a subsequent request to return the next page of
+          results. This field will be empty if there aren't any additional results.
+    description: |-
+      This is the response from `POST /peers/list` expressed as
+      JSON.
+  ga4ghListReferenceBasesRequest:
+    type: object
+    properties:
+      reference_id:
+        type: string
+        description: The ID of the `Reference` to be retrieved.
+      start:
+        type: string
+        format: int64
+        description: |-
+          The start position (0-based) of this query. Defaults to 0.
+          Genomic positions are non-negative integers less than reference length.
+          Requests spanning the join of circular genomes are represented as
+          two requests one on each side of the join (position 0).
+      end:
+        type: string
+        format: int64
+        description: |-
+          The end position (0-based, exclusive) of this query. Defaults
+          to the length of this `Reference`.
+      page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          To get the next page of results, set this parameter to the value of
+          `next_page_token` from the previous response.
+    description: |-
+      This request retrieves a region of a reference genome when sent to
+      the `/listreferencebases` endpoint.
+  ga4ghListReferenceBasesResponse:
+    type: object
+    properties:
+      offset:
+        type: string
+        format: int64
+        description: |-
+          The offset position (0-based) of the given sequence from the start of this
+          `Reference`. This value will differ for each page in a paginated request.
+      sequence:
+        type: string
+        description: |-
+          A substring of the bases that make up this reference. Bases are represented
+          as IUPAC-IUB codes; this string matches the regexp `[ACGTMRWSYKVHDBN]*`.
+      next_page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          Provide this value in a subsequent request to return the next page of
+          results. This field will be empty if there aren't any additional results.
+    description: The response from `POST /listreferencebases` expressed as JSON.
+  ga4ghNullValue:
+    type: string
+    enum:
+      - NULL_VALUE
+    default: NULL_VALUE
+    description: ' - NULL_VALUE: Null value.'
+  ga4ghOntologyTerm:
+    type: object
+    properties:
+      term_id:
+        type: string
+        description: |-
+          Ontology term identifier - the CURIE for an ontology term. It
+          differs from the standard GA4GH schema's :ref:`id <apidesign_object_ids>`
+          in that it is a CURIE pointing to an information resource outside of the
+          scope of the schema or its resource implementation.
+      term:
+        type: string
+        description: Ontology term - the label of the ontology term the termId is pointing to.
+    title: |-
+      An ontology term describing an attribute. (e.g. the phenotype attribute
+      'polydactyly' from HPO)
+  ga4ghPeer:
+    type: object
+    properties:
+      url:
+        type: string
+        description: |-
+          This is the base URL where the service can be accessed from. It is
+          expected to be fully formed and to include the port number if the
+          port in use is not standard (http 80, https 443).
+
+          For example, the peer at 1kgenomes would appear as:
+            http://1kgenomes.ga4gh.org
+
+          Trailing slashes should be ignored when constructing client
+          requests based on this peer, and so shouldn't be included.
+
+          This example shows a peer that has specified both a base path
+          and a port.
+            http://myapp.mycloudservice.com:8080/data/ga4gh
+      attributes:
+        $ref: '#/definitions/ga4ghAttributes'
+        description: A map of additional information about the service can be included.
+    description: |-
+      Peers allow clients to represent services to each other so
+      ad-hoc networks can be easily constructed.
+  ga4ghPhenotypeAssociationSet:
+    type: object
+    properties:
+      id:
+        type: string
+        description: The phenotype association set ID.
+      name:
+        type: string
+        description: The phenotype association set name.
+      dataset_id:
+        type: string
+        description: The ID of the dataset this phenotype association set belongs to.
+      info:
+        type: object
+        additionalProperties:
+          $ref: '#/definitions/protobufListValue'
+        description: Optional additional information for this phenotype association set.
+    description: The top level container for phenotype association data.
+  ga4ghPhenotypeInstance:
+    type: object
+    properties:
+      id:
+        type: string
+        description: The Phenotype ID.
+      type:
+        $ref: '#/definitions/ga4ghOntologyTerm'
+        title: HPO is recommended
+      qualifier:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghOntologyTerm'
+        title: |-
+          PATO is recommended.  Often this qualifier might be for abnormal/normal,
+          or severity.
+          For example, severe: http://purl.obolibrary.org/obo/PATO_0000396
+          or abnormal: http://purl.obolibrary.org/obo/PATO_0000460
+      age_of_onset:
+        $ref: '#/definitions/ga4ghOntologyTerm'
+        title: |-
+          HPO is recommended, for example, subclasses of
+          http://www.human-phenotype-ontology.org/hpoweb/showterm?id=HP:0011007
+          TODO: also allow quantitative recording?
+      description:
+        type: string
+        description: |-
+          A textual description of the phenotype. This is used to complement the
+          structured phenotype description in the type field.
+      info:
+        type: object
+        additionalProperties:
+          $ref: '#/definitions/protobufListValue'
+        description: Additional annotation data in key-value pairs.
+    title: |-
+      An association to a phenotype and related information.
+      This record is intended primarily to be used in conjunction with variants, but
+      the record can also be composed with other kinds of entities such as diseases
+  ga4ghProgram:
+    type: object
+    properties:
+      command_line:
+        type: string
+        description: The command line used to run this program.
+      id:
+        type: string
+        description: The user specified ID of the program.
+      name:
+        type: string
+        description: The name of the program.
+      prev_program_id:
+        type: string
+        description: The ID of the program run before this one.
+      version:
+        type: string
+        description: The version of the program run.
+    description: A Program describes software used in data processing or analysis.
+  ga4ghReference:
+    type: object
+    properties:
+      id:
+        type: string
+        description: The reference ID. Unique within the repository.
+      length:
+        type: string
+        format: int64
+        description: The length of this reference's sequence.
+      md5checksum:
+        type: string
+        description: |-
+          The MD5 checksum uniquely representing this `Reference` as a lower-case
+          hexadecimal string, calculated as the MD5 of the upper-case sequence
+          excluding all whitespace characters (this is equivalent to SQ:M5 in SAM).
+      name:
+        type: string
+        description: The unique name of this reference within the Reference Set (e.g. '22').
+      source_uri:
+        type: string
+        description: |-
+          The URI from which the sequence was obtained. Specifies a FASTA format
+          file/string with one name, sequence pair. In most cases, clients should
+          call
+          the `getReferenceBases()` method to obtain sequence bases for a `Reference`
+          instead of attempting to retrieve this URI.
+      source_accessions:
+        type: array
+        items:
+          type: string
+        description: |-
+          All known corresponding accession IDs in INSDC (GenBank/ENA/DDBJ) which
+          must include
+          a version number, e.g. `GCF_000001405.26`.
+      is_derived:
+        type: boolean
+        format: boolean
+        description: |-
+          A sequence X is said to be derived from source sequence Y, if X and Y
+          are of the same length and the per-base sequence divergence at A/C/G/T
+          bases
+          is sufficiently small. Two sequences derived from the same official
+          sequence share the same coordinates and annotations, and
+          can be replaced with the official sequence for certain use cases.
+      source_divergence:
+        type: number
+        format: float
+        description: |-
+          The `sourceDivergence` is the fraction of non-indel bases that do not match
+          the
+          reference this message was derived from.
+      species:
+        $ref: '#/definitions/ga4ghOntologyTerm'
+        title: |-
+          For a representation of an NCBI Taxon ID as an OntologyTerm, see
+          NCBITaxon Ontology
+            http://www.obofoundry.org/ontology/ncbitaxon.html
+          For example, 'Homo sapiens' has the ID 9606. The NCBITaxon ontology ID for
+          this is NCBITaxon:9606, which has the URI
+          http://purl.obolibrary.org/obo/NCBITaxon_9606
+      attributes:
+        $ref: '#/definitions/ga4ghAttributes'
+        description: A map of additional information.
+    description: |-
+      A `Reference` is a canonical assembled contig, intended to act as a
+      reference coordinate space for other genomic annotations. A single
+      `Reference` might represent the human chromosome 1, for instance.
+
+      `Reference` s are designed to be immutable.
+  ga4ghReferenceSet:
+    type: object
+    properties:
+      id:
+        type: string
+        description: The reference set ID. Unique in the repository.
+      name:
+        type: string
+        description: The reference set name.
+      md5checksum:
+        type: string
+        description: |-
+          Order-independent MD5 checksum which identifies this `ReferenceSet`.
+
+          To compute this checksum, make a list of `Reference.md5checksum` for all
+          `Reference` s in this set. Then sort that list, and take the MD5 hash of
+          all the strings concatenated together. Express the hash as a lower-case
+          hexadecimal string.
+      species:
+        $ref: '#/definitions/ga4ghOntologyTerm'
+        title: |-
+          For a representation of an NCBI Taxon ID as an OntologyTerm, see
+          NCBITaxon Ontology
+            http://www.obofoundry.org/ontology/ncbitaxon.html
+          For example, 'Homo sapiens' has the ID 9606. The NCBITaxon ontology ID for
+          this is NCBITaxon:9606, which has the URI
+          http://purl.obolibrary.org/obo/NCBITaxon_9606
+      description:
+        type: string
+        description: Optional free text description of this reference set.
+      assembly_id:
+        type: string
+        description: |-
+          The remaining information is about the source of the sequences
+          Public id of this reference set, such as `GRCh37`.
+      source_uri:
+        type: string
+        description: Specifies a FASTA format file/string.
+      source_accessions:
+        type: array
+        items:
+          type: string
+        description: |-
+          All known corresponding accession IDs in INSDC (GenBank/ENA/DDBJ) ideally
+          with a version number, e.g. `NC_000001.11`.
+      is_derived:
+        type: boolean
+        format: boolean
+        description: |-
+          A reference set may be derived from a source if it contains
+          additional sequences, or some of the sequences within it are derived
+          (see the definition of `isDerived` in `Reference`).
+      attributes:
+        $ref: '#/definitions/ga4ghAttributes'
+        description: A map of additional information.
+    description: |-
+      A `ReferenceSet` is a set of `Reference` s which typically comprise a
+      reference assembly, such as `GRCh38`. A `ReferenceSet` defines a common
+      coordinate space for comparing reference-aligned experimental data.
+  ga4ghRnaQuantification:
+    type: object
+    properties:
+      id:
+        type: string
+        description: |-
+          The unique ID assigned to the results of running the described programs
+          on the specified reads and assignment to the listed annotation.
+      name:
+        type: string
+        title: Name
+      biosample_id:
+        type: string
+        title: Biosample ID
+      description:
+        type: string
+        title: Description
+      read_group_ids:
+        type: array
+        items:
+          type: string
+        description: ID(s) of the ReadGroup(s) providing the reads for the analysis.
+      programs:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghProgram'
+        description: Programs can be used to track the provenance of how read data was quantified.
+      feature_set_ids:
+        type: array
+        items:
+          type: string
+        description: List of annotation sets used.
+      rna_quantification_set_id:
+        type: string
+        description: ID of the containing RnaQuantificationSet.
+      attributes:
+        $ref: '#/definitions/ga4ghAttributes'
+        description: A map of additional information about the Quantification.
+    title: Top level identifying information
+  ga4ghRnaQuantificationSet:
+    type: object
+    properties:
+      id:
+        type: string
+        description: The RNA quantification set ID.
+      dataset_id:
+        type: string
+        description: The ID of the dataset this RNA Quantification set belongs to.
+      name:
+        type: string
+        description: The RNA quantification set name.
+      attributes:
+        $ref: '#/definitions/ga4ghAttributes'
+        description: A map of additional information about the Quantification Set.
+    description: |-
+      A collection of associated RNAQuantifications.  Typically this will be all
+      the Quantifications of samples from an experiment.  For example, a time
+      course experiment would be described by a RnaQuantificationSet with the
+      individual RNASeq experiments of the time point being represented as the
+      member RnaQuantifications.
+  ga4ghSearchBiosamplesRequest:
+    type: object
+    properties:
+      dataset_id:
+        type: string
+        description: Optionally specify the dataset to search within.
+      name:
+        type: string
+        description: Returns Biosamples with the given name found by case-sensitive string matching.
+      individual_id:
+        type: string
+        description: Returns Biosamples for the provided individual ID.
+      page_size:
+        type: integer
+        format: int32
+        description: |-
+          Specifies the maximum number of results to return in a single page.
+          If unspecified, a system default will be used.
+      page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          To get the next page of results, set this parameter to the value of
+          `nextPageToken` from the previous response.
+    description: |-
+      *********************  /biosamples ********************************
+      This is the request sent to `POST /biosamples/search` expressed as JSON.
+  ga4ghSearchBiosamplesResponse:
+    type: object
+    properties:
+      biosamples:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghBiosample'
+        description: The list of biosamples.
+      next_page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          Provide this value in a subsequent request to return the next page of
+          results. This field will be empty if there aren't any additional results.
+    description: This is the response from `POST /biosamples/search` expressed as JSON.
+  ga4ghSearchCallSetsRequest:
+    type: object
+    properties:
+      variant_set_id:
+        type: string
+        description: The VariantSet to search.
+      name:
+        type: string
+        description: 'Only return call sets with this name (case-sensitive, exact match).'
+      biosample_id:
+        type: string
+        description: Return only call sets generated from the provided Biosample ID.
+      page_size:
+        type: integer
+        format: int32
+        description: |-
+          Specifies the maximum number of results to return in a single page.
+          If unspecified, a system default will be used.
+      page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          To get the next page of results, set this parameter to the value of
+          `next_page_token` from the previous response.
+    description: |-
+      ******************  /callsets  *********************
+      This request maps to the body of `POST /callsets/search` as JSON.
+  ga4ghSearchCallSetsResponse:
+    type: object
+    properties:
+      call_sets:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghCallSet'
+        description: The list of matching call sets.
+      next_page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          Provide this value in a subsequent request to return the next page of
+          results. This field will be empty if there aren't any additional results.
+    description: This is the response from `POST /callsets/search` expressed as JSON.
+  ga4ghSearchContinuousRequest:
+    type: object
+    properties:
+      continuous_set_id:
+        type: string
+        description: The annotation set to search within. Required value.
+      reference_name:
+        type: string
+        description: Get continuous values on this reference. Required value.
+      start:
+        type: string
+        format: int64
+        description: |-
+          The beginning of the window (0-based, inclusive) for which
+          continuous values should be returned.
+          Required value.
+      end:
+        type: string
+        format: int64
+        description: |-
+          The end of the window (0-based, exclusive) for which continuous
+          values should be returned.
+          Required value.
+      page_size:
+        type: integer
+        format: int32
+        description: |-
+          Specifies the maximum number of results to return in a single page.
+          If unspecified, a system default will be used.
+      page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          To get the next page of results, set this parameter to the value of
+          `next_page_token` from the previous response.
+    description: This request maps to the body of `POST /continuous/search` as JSON.
+  ga4ghSearchContinuousResponse:
+    type: object
+    properties:
+      continuous:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghContinuous'
+        description: |-
+          The list of matching continuous values, sorted by start position.
+          All sampled values within the query range are returned.
+          Unsampled values are assigned 'NaN' value. The values returned
+          do not necessarily cover the same range as the query as all
+          unsampled values might not be returned or if the query range extends
+          beyond the reference range.
+      next_page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          Provide this value in a subsequent request to return the next page of
+          results. This field will be empty if there aren't any additional results.
+    description: This is the response from `POST /continuous/search` expressed as JSON.
+  ga4ghSearchContinuousSetsRequest:
+    type: object
+    properties:
+      dataset_id:
+        type: string
+        description: The `Dataset` to search.
+      page_size:
+        type: integer
+        format: int32
+        description: |-
+          Specifies the maximum number of results to return in a single page.
+          If unspecified, a system default will be used.
+      page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          To get the next page of results, set this parameter to the value of
+          `next_page_token` from the previous response.
+    description: '* This request maps to the body of `POST /continuoussets/search` as JSON.'
+  ga4ghSearchContinuousSetsResponse:
+    type: object
+    properties:
+      continuous_sets:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghContinuousSet'
+        description: The list of matching feature sets.
+      next_page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          Provide this value in a subsequent request to return the next page of
+          results. This field will be empty if there aren't any additional results.
+    description: This is the response from `POST /continuoussets/search` expressed as JSON.
+  ga4ghSearchDatasetsRequest:
+    type: object
+    properties:
+      page_size:
+        type: integer
+        format: int32
+        description: |-
+          Specifies the maximum number of results to return in a single page.
+          If unspecified, a system default will be used.
+      page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          To get the next page of results, set this parameter to the value of
+          `next_page_token` from the previous response.
+    description: This request maps to the body of `POST /datasets/search` as JSON.
+  ga4ghSearchDatasetsResponse:
+    type: object
+    properties:
+      datasets:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghDataset'
+        description: The list of datasets.
+      next_page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          Provide this value in a subsequent request to return the next page of
+          results. This field will be empty if there aren't any additional results.
+    description: This is the response from `POST /datasets/search` expressed as JSON.
+  ga4ghSearchExpressionLevelsRequest:
+    type: object
+    properties:
+      rna_quantification_id:
+        type: string
+        description: The rnaQuantification to restrict search to.
+      names:
+        type: array
+        items:
+          type: string
+        description: Only return expressions with any of the names (strict string matching).
+      threshold:
+        type: number
+        format: float
+        title: |-
+          Only return ExpressionLevel records with expressions exceeding
+          this value.  (Defaults to 0.0)
+      page_size:
+        type: integer
+        format: int32
+        description: |-
+          Specifies the maximum number of results to return in a single page.
+          If unspecified, a system default will be used.
+      page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          To get the next page of results, set this parameter to the value of
+          'nextPageToken' from the previous response.
+    description: |-
+      ****************  /expressionlevels/search  *******************
+      This request maps to the body of 'POST /expressionlevels/search'
+      as JSON.
+  ga4ghSearchExpressionLevelsResponse:
+    type: object
+    properties:
+      expression_levels:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghExpressionLevel'
+        description: The list of matching quantifications.
+      next_page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          To get the next page of results, set this parameter to the value of
+          'nextPageToken' from the previous response.
+    description: This is the response from 'POST /expressionlevels/search' expressed as JSON.
+  ga4ghSearchFeatureSetsRequest:
+    type: object
+    properties:
+      dataset_id:
+        type: string
+        description: The `Dataset` to search.
+      page_size:
+        type: integer
+        format: int32
+        description: |-
+          Specifies the maximum number of results to return in a single page.
+          If unspecified, a system default will be used.
+      page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          To get the next page of results, set this parameter to the value of
+          `next_page_token` from the previous response.
+    description: '* This request maps to the body of `POST /featuresets/search` as JSON.'
+  ga4ghSearchFeatureSetsResponse:
+    type: object
+    properties:
+      feature_sets:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghFeatureSet'
+        description: The list of matching feature sets.
+      next_page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          Provide this value in a subsequent request to return the next page of
+          results. This field will be empty if there aren't any additional results.
+    description: This is the response from `POST /featuresets/search` expressed as JSON.
+  ga4ghSearchFeaturesRequest:
+    type: object
+    properties:
+      feature_set_id:
+        type: string
+        description: |-
+          The annotation set to search within. Either `feature_set_id` or
+          `parent_id` must be non-empty.
+      name:
+        type: string
+        description: 'Only returns features with this name (case-sensitive, exact match).'
+      gene_symbol:
+        type: string
+        description: |-
+          Only return features with matching the provided gene symbol
+          (case-sensitive, exact match).
+          This field may be replaced with a more generic representation
+          in a future version.
+      parent_id:
+        type: string
+        description: |-
+          Restricts the search to direct children of the given parent `feature`
+          ID. Either `feature_set_id` or `parent_id` must be non-empty.
+      reference_name:
+        type: string
+        description: |-
+          Only return features on the reference with this name
+          (matched to literal reference name as imported from the GFF3).
+      start:
+        type: string
+        format: int64
+        description: |-
+          Required, if name or symbol not provided.
+          The beginning of the window (0-based, inclusive) for which
+          overlapping features should be returned.  Genomic positions are
+          non-negative integers less than reference length.  Requests spanning the
+          join of circular genomes are represented as two requests one on each side
+          of the join (position 0).
+      end:
+        type: string
+        format: int64
+        description: |-
+          Required, if name or symbol not provided.
+          The end of the window (0-based, exclusive) for which overlapping
+          features should be returned.
+      feature_types:
+        type: array
+        items:
+          type: string
+        description: |-
+          TODO: To be replaced with a fully featured ontology search
+          once the Metadata definitions are rounded out.
+          If specified, this query matches only annotations whose `feature_type`
+          matches one of the provided ontology terms.
+      page_size:
+        type: integer
+        format: int32
+        description: |-
+          Specifies the maximum number of results to return in a single page.
+          If unspecified, a system default will be used.
+      page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          To get the next page of results, set this parameter to the value of
+          `next_page_token` from the previous response.
+    description: This request maps to the body of `POST /features/search` as JSON.
+  ga4ghSearchFeaturesResponse:
+    type: object
+    properties:
+      features:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghFeature'
+        description: |-
+          The list of matching annotations, sorted by start position. Annotations
+          which share a start position are returned in a deterministic order.
+      next_page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          Provide this value in a subsequent request to return the next page of
+          results. This field will be empty if there aren't any additional results.
+    description: This is the response from `POST /features/search` expressed as JSON.
+  ga4ghSearchGenotypePhenotypeRequest:
+    type: object
+    properties:
+      phenotype_association_set_id:
+        type: string
+        title: The `PhenotypeAssociationSet` to search. Mandatory
+      feature_ids:
+        type: array
+        items:
+          type: string
+        description: At least one feature_id or phenotype_id must be provided.
+      phenotype_ids:
+        type: array
+        items:
+          type: string
+        title: Phenotype IDs
+      evidence:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghEvidenceQuery'
+        title: evidence
+      page_size:
+        type: string
+        format: int64
+        description: |-
+          Specifies the maximum number of results to return in a single page.
+          If unspecified, a system default will be used.
+      page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          To get the next page of results, set this parameter to the value of
+          `nextPageToken` from the previous response.
+    description: |-
+      This request maps to the body of `POST /featurephenotypeassociations/search` as JSON.
+
+      The goal here is to allow users to query using one or more of
+      Genotype, Phenotype, Environment, and Evidence.
+
+      A query using one of the above items is to mean, by default,
+      that the remainder of the query is as a "wildcard", such
+      that all matches to just that query term would come back.
+      Combinations of the above are to act like AND rather than OR.
+
+      The "genotype" part of the query methods can be one or more
+      genomic features.  Associations can be made at many
+      levels of granularity (from whole genotypes down to individual
+      SNVs), but users may use these methods with partial or
+      inexact information.  Therefore, the query methods must be
+      able to support query of some or all of the associated features.
+      Furthermore, use of the relationships between genomic features
+      means that when querying for a gene, any variants to that
+      gene are also returned.  For example, a query with
+      BRCA2 would mean that in addition to any direct associations
+      to the BRCA2, all associations to sequence variants of BRCA2 would also
+      be returned.  Similarly, queries with OntologyTerms should perform
+      the subclass closure.
+
+      Each query can be made against a string, an array of external
+      identifers (such as for gene or SNP ids), ontology term ids, or
+      full feature/phenotype/evidence objects.
+  ga4ghSearchGenotypePhenotypeResponse:
+    type: object
+    properties:
+      associations:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghFeaturePhenotypeAssociation'
+        description: The list of matching FeaturePhenotypeAssociation.
+      next_page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          Provide this value in a subsequent request to return the next page of
+          results. This field will be empty if there aren't any additional results.
+    description: This is the response from `POST /genotypephenotype/search` expressed as JSON.
+  ga4ghSearchIndividualsRequest:
+    type: object
+    properties:
+      dataset_id:
+        type: string
+        description: Optionally specify the dataset to search within.
+      name:
+        type: string
+        description: Returns Individuals with the given name found by case-sensitive string matching.
+      page_size:
+        type: integer
+        format: int32
+        description: |-
+          Specifies the maximum number of results to return in a single page.
+          If unspecified, a system default will be used.
+      page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          To get the next page of results, set this parameter to the value of
+          `nextPageToken` from the previous response.
+    description: |-
+      *********************  /individuals ********************************
+      This request maps to the body of `POST /individuals/search` as JSON.
+  ga4ghSearchIndividualsResponse:
+    type: object
+    properties:
+      individuals:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghIndividual'
+        description: The list of individuals.
+      next_page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          Provide this value in a subsequent request to return the next page of
+          results. This field will be empty if there aren't any additional results.
+    description: This is the response from `POST /individuals/search` expressed as JSON.
+  ga4ghSearchPhenotypeAssociationSetsRequest:
+    type: object
+    properties:
+      dataset_id:
+        type: string
+        title: The `Dataset` to search. Mandatory
+      page_size:
+        type: string
+        format: int64
+        description: |-
+          Specifies the maximum number of results to return in a single page.
+          If unspecified, a system default will be used.
+      page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          To get the next page of results, set this parameter to the value of
+          `nextPageToken` from the previous response.
+    description: This request maps to the body of `POST /phenotypeassociationsets/search` as JSON.
+  ga4ghSearchPhenotypeAssociationSetsResponse:
+    type: object
+    properties:
+      phenotype_association_sets:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghPhenotypeAssociationSet'
+        description: The list of matching phenotype association sets.
+      next_page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          Provide this value in a subsequent request to return the next page of
+          results. This field will be empty if there aren't any additional results.
+    description: This is the response from `POST /phenotypeassociationsets/search` expressed as JSON.
+  ga4ghSearchPhenotypesRequest:
+    type: object
+    properties:
+      phenotype_association_set_id:
+        type: string
+        title: The `PhenotypeAssociationSet` to search. Mandatory
+      id:
+        type: string
+        title: |-
+          Phenotype ID
+          TODO remove if a get-by-phenotype ID endpoint is added
+      description:
+        type: string
+        title: 'The system may support regex. https://www.w3.org/TR/xpath-functions/#regex-syntax'
+      type:
+        $ref: '#/definitions/ga4ghOntologyTerm'
+        title: Only return results that match this type
+      qualifiers:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghOntologyTerm'
+        title: terms should be OR'd together. e.g. (severe OR abnormal)
+      age_of_onset:
+        $ref: '#/definitions/ga4ghOntologyTerm'
+        title: Only return results that match this age of onset
+      page_size:
+        type: string
+        format: int64
+        description: |-
+          Specifies the maximum number of results to return in a single page.
+          If unspecified, a system default will be used.
+      page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          To get the next page of results, set this parameter to the value of
+          `next_page_token` from the previous response.
+  ga4ghSearchPhenotypesResponse:
+    type: object
+    properties:
+      phenotypes:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghPhenotypeInstance'
+        description: The list of matching PhenotypeInstances.
+      next_page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          Provide this value in a subsequent request to return the next page of
+          results. This field will be empty if there aren't any additional results.
+    description: This is the response from `POST /phenotypes/search` expressed as JSON.
+  ga4ghSearchReferenceSetsRequest:
+    type: object
+    properties:
+      md5checksum:
+        type: string
+        description: |-
+          If unset, return the reference sets for which the
+          `md5checksum` matches this string (case-sensitive, exact match).
+          See `ReferenceSet::md5checksum` for details.
+      accession:
+        type: string
+        description: |-
+          If unset, return the reference sets for which the `accession`
+          matches this string (case-sensitive, exact match).
+      assembly_id:
+        type: string
+        description: |-
+          If unset, return the reference sets for which the `assemblyId`
+          matches this string (case-sensitive, exact match).
+      page_size:
+        type: integer
+        format: int32
+        description: |-
+          Specifies the maximum number of results to return in a single page.
+          If unspecified, a system default will be used.
+      page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          To get the next page of results, set this parameter to the value of
+          `next_page_token` from the previous response.
+    description: |-
+      ****************  /referencesets  *******************
+      This request maps to the body of `POST /referencesets/search` as JSON.
+  ga4ghSearchReferenceSetsResponse:
+    type: object
+    properties:
+      reference_sets:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghReferenceSet'
+        description: The list of matching reference sets.
+      next_page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          Provide this value in a subsequent request to return the next page of
+          results. This field will be empty if there aren't any additional results.
+    description: This is the response from `POST /referencesets/search` expressed as JSON.
+  ga4ghSearchReferencesRequest:
+    type: object
+    properties:
+      reference_set_id:
+        type: string
+        description: The `ReferenceSet` to search.
+      md5checksum:
+        type: string
+        description: |-
+          If specified, return the references for which the
+          `md5checksum` matches this string (case-sensitive, exact match).
+          See `ReferenceSet::md5checksum` for details.
+      accession:
+        type: string
+        description: |-
+          If specified, return the references for which the `accession`
+          matches this string (case-sensitive, exact match).
+      page_size:
+        type: integer
+        format: int32
+        description: |-
+          Specifies the maximum number of results to return in a single page.
+          If unspecified, a system default will be used.
+      page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          To get the next page of results, set this parameter to the value of
+          `next_page_token` from the previous response.
+    description: |-
+      ****************  /references  *******************
+      This request maps to the body of `POST /references/search` as JSON.
+  ga4ghSearchReferencesResponse:
+    type: object
+    properties:
+      references:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghReference'
+        description: The list of matching references.
+      next_page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          Provide this value in a subsequent request to return the next page of
+          results. This field will be empty if there aren't any additional results.
+    description: This is the response from `POST /references/search` expressed as JSON.
+  ga4ghSearchRnaQuantificationSetsRequest:
+    type: object
+    properties:
+      dataset_id:
+        type: string
+        description: The `Dataset` to search.
+      page_size:
+        type: integer
+        format: int32
+        description: |-
+          Specifies the maximum number of results to return in a single page.
+          If unspecified, a system default will be used.
+      page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          To get the next page of results, set this parameter to the value of
+          'nextPageToken' from the previous response.
+    description: |-
+      This request maps to the body of 'POST /rnaquantificationsets/search'
+      as JSON.
+  ga4ghSearchRnaQuantificationSetsResponse:
+    type: object
+    properties:
+      rna_quantification_sets:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghRnaQuantificationSet'
+        description: The list of matching quantification sets.
+      next_page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          To get the next page of results, set this parameter to the value of
+          'nextPageToken' from the previous response.
+    description: This is the response from 'POST /rnaquantificationsets/search' expressed as JSON.
+  ga4ghSearchRnaQuantificationsRequest:
+    type: object
+    properties:
+      rna_quantification_set_id:
+        type: string
+        description: |-
+          Return only Rna Quantifications which belong to this set.
+          Must be specified.
+      biosample_id:
+        type: string
+        description: Return only RNA quantifications regarding the specified biosample. Optional.
+      page_size:
+        type: integer
+        format: int32
+        description: |-
+          Specifies the maximum number of results to return in a single page.
+          If unspecified, a system default will be used.
+      page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          To get the next page of results, set this parameter to the value of
+          'nextPageToken' from the previous response.
+    description: |-
+      This request maps to the body of 'POST /rnaquantifications/search'
+      as JSON.
+  ga4ghSearchRnaQuantificationsResponse:
+    type: object
+    properties:
+      rna_quantifications:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghRnaQuantification'
+        description: The list of matching quantifications.
+      next_page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          To get the next page of results, set this parameter to the value of
+          'nextPageToken' from the previous response.
+    description: This is the response from 'POST /rnaquantifications/search' expressed as JSON.
+  ga4ghSearchVariantAnnotationSetsRequest:
+    type: object
+    properties:
+      variant_set_id:
+        type: string
+        description: Required. The `VariantSet` to search.
+      page_size:
+        type: integer
+        format: int32
+        description: |-
+          Specifies the maximum number of results to return in a single page. If
+          unspecified, a system default will be used.
+      page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          To get the next page of results, set this parameter to the value of
+          `next_page_token` from the previous response.
+    description: |-
+      This request maps to the body of `POST /variantannotationsets/search` as
+      JSON.
+  ga4ghSearchVariantAnnotationSetsResponse:
+    type: object
+    properties:
+      variant_annotation_sets:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghVariantAnnotationSet'
+        description: The list of matching variant annotation sets.
+      next_page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          Provide this value in a subsequent request to return the next page of
+          results. This field will be empty if there aren't any additional results.
+    description: |-
+      This is the response from `POST /variantannotationsets/search` expressed as
+      JSON.
+  ga4ghSearchVariantAnnotationsRequest:
+    type: object
+    properties:
+      variant_annotation_set_id:
+        type: string
+        description: Required. The ID of the variant annotation set to search over.
+      reference_name:
+        type: string
+        description: |-
+          Only return variants with reference alleles on the reference with this
+          name. One of this field or `reference_id` is required.
+      reference_id:
+        type: string
+        description: |-
+          Only return variants with reference alleles on the reference with this
+          ID. One of this field or `reference_name` is required.
+      start:
+        type: string
+        format: int64
+        description: |-
+          Required if reference_name or reference_id supplied. The beginning of the
+          window (0-based, inclusive) for which variants with overlapping reference
+          alleles should be returned. Genomic positions are non-negative integers
+          less than reference length. Requests spanning the join of circular
+          genomes are represented as two requests one on each side of the join
+          (position 0).
+      end:
+        type: string
+        format: int64
+        description: |-
+          Required if reference_name or reference_id supplied. The end of the window
+          (0-based, exclusive) for which variants with overlapping reference
+          alleles should be returned.
+      effects:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghOntologyTerm'
+        description: |-
+          This filter allows variant, transcript combinations to be extracted by
+          effect type(s). Only return variant annotations including any of these
+          effects and only return transcript effects including any of these
+          effects. Exact matching across all fields of the Sequence Ontology
+          OntologyTerm is required. (A transcript effect may have multiple SO
+          effects which will all be reported.) If empty, return all variant
+          annotations.
+      page_size:
+        type: integer
+        format: int32
+        description: |-
+          Specifies the maximum number of results to return in a single page. If
+          unspecified, a system default will be used.
+      page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          To get the next page of results, set this parameter to the value of
+          `next_page_token` from the previous response.
+    description: This request maps to the body of `POST /variantannotations/search` as JSON.
+  ga4ghSearchVariantAnnotationsResponse:
+    type: object
+    properties:
+      variant_annotations:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghVariantAnnotation'
+        description: The list of matching variant annotations.
+      next_page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          Provide this value in a subsequent request to return the next page of
+          results. This field will be empty if there aren't any additional results.
+    description: |-
+      This is the response from `POST /variantannotations/search` expressed as
+      JSON.
+  ga4ghSearchVariantSetsRequest:
+    type: object
+    properties:
+      dataset_id:
+        type: string
+        description: The `Dataset` to search.
+      page_size:
+        type: integer
+        format: int32
+        description: |-
+          Specifies the maximum number of results to return in a single page.
+          If unspecified, a system default will be used.
+      page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets. To
+          get the next page of results, set this parameter to the value of
+          `next_page_token` from the previous response.
+    description: |-
+      ******************  /variantsets  *********************
+      This request maps to the body of `POST /variantsets/search` as JSON.
+  ga4ghSearchVariantSetsResponse:
+    type: object
+    properties:
+      variant_sets:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghVariantSet'
+        description: The list of matching variant sets.
+      next_page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          Provide this value in a subsequent request to return the next page of
+          results. This field will be empty if there aren't any additional results.
+    description: This is the response from `POST /variantsets/search` expressed as JSON.
+  ga4ghSearchVariantsRequest:
+    type: object
+    properties:
+      variant_set_id:
+        type: string
+        description: The `VariantSet` to search.
+      call_set_ids:
+        type: array
+        items:
+          type: string
+        description: |-
+          Only return variant calls which belong to call sets with these IDs.
+          If unspecified, return all variants and no variant call objects.
+      reference_name:
+        type: string
+        description: Required. Only return variants on this reference.
+      start:
+        type: string
+        format: int64
+        description: |-
+          Required. The beginning of the window (0-based, inclusive) for
+          which overlapping variants should be returned.
+          Genomic positions are non-negative integers less than reference length.
+          Requests spanning the join of circular genomes are represented as
+          two requests one on each side of the join (position 0).
+      end:
+        type: string
+        format: int64
+        description: |-
+          Required. The end of the window (0-based, exclusive) for which overlapping
+          variants should be returned.
+      page_size:
+        type: integer
+        format: int32
+        description: |-
+          Specifies the maximum number of results to return in a single page.
+          If unspecified, a system default will be used.
+      page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          To get the next page of results, set this parameter to the value of
+          `next_page_token` from the previous response.
+    description: |-
+      ******************  /variants  *********************
+      This request maps to the body of `POST /variants/search` as JSON.
+  ga4ghSearchVariantsResponse:
+    type: object
+    properties:
+      variants:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghVariant'
+        description: |-
+          The list of matching variants.
+          If the `callSetId` field on the returned calls is not present,
+          the ordering of the call sets from a `SearchCallSetsRequest`
+          over the parent `VariantSet` is guaranteed to match the ordering
+          of the calls on each `Variant`. The number of results will also be
+          the same.
+      next_page_token:
+        type: string
+        description: |-
+          The continuation token, which is used to page through large result sets.
+          Provide this value in a subsequent request to return the next page of
+          results. This field will be empty if there aren't any additional results.
+    description: This is the response from `POST /variants/search` expressed as JSON.
+  ga4ghStrand:
+    type: string
+    enum:
+      - STRAND_UNSPECIFIED
+      - NEG_STRAND
+      - POS_STRAND
+    default: STRAND_UNSPECIFIED
+    description: |-
+      Indicates the associated DNA strand for some data item.
+
+       - STRAND_UNSPECIFIED: If no strand data is available.
+       - NEG_STRAND: The negative (-) strand.
+       - POS_STRAND: The postive (+) strand.
+  ga4ghTranscriptEffect:
+    type: object
+    properties:
+      id:
+        type: string
+        title: The ID of the transcript effect record
+      feature_id:
+        type: string
+        title: |-
+          The id of the transcript feature the annotation is relative to.
+          TODO: derive unique id from digest of data [location, allele, transcript?]
+      alternate_bases:
+        type: string
+        description: |-
+          Alternate allele - a variant may have more than one alternate allele,
+          each of which will have distinct annotation.
+      effects:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghOntologyTerm'
+        description: Effect of variant on this feature.
+      hgvs_annotation:
+        $ref: '#/definitions/ga4ghHGVSAnnotation'
+        description: Human Genome Variation Society variant descriptions.
+      cdna_location:
+        $ref: '#/definitions/ga4ghAlleleLocation'
+        description: Change relative to cDNA.
+      cds_location:
+        $ref: '#/definitions/ga4ghAlleleLocation'
+        description: Change relative to coding sequence.
+      protein_location:
+        $ref: '#/definitions/ga4ghAlleleLocation'
+        description: Change relative to protein.
+      analysis_results:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghAnalysisResult'
+        description: Output from prediction packages such as SIFT.
+      attributes:
+        $ref: '#/definitions/ga4ghAttributes'
+        description: A map of additional information about the Transcript Effect.
+    title: |-
+      A transcript effect record is a set of information describing the effect of
+      an allele on a transcript
+  ga4ghVariant:
+    type: object
+    properties:
+      id:
+        type: string
+        description: The variant ID.
+      variant_set_id:
+        type: string
+        description: |-
+          The ID of the `VariantSet` this variant belongs to. This transitively
+          defines
+          the `ReferenceSet` against which the `Variant` is to be interpreted.
+      names:
+        type: array
+        items:
+          type: string
+        description: 'Names for the variant, for example a RefSNP ID.'
+      created:
+        type: string
+        format: int64
+        description: The date this variant was created in milliseconds from the epoch.
+      updated:
+        type: string
+        format: int64
+        description: |-
+          The time at which this variant was last updated in
+          milliseconds from the epoch.
+      reference_name:
+        type: string
+        title: |-
+          The reference on which this variant occurs.
+          (e.g. `chr20` or `X`)
+      start:
+        type: string
+        format: int64
+        description: |-
+          The start position at which this variant occurs (0-based).
+          This corresponds to the first base of the string of reference bases.
+          Genomic positions are non-negative integers less than reference length.
+          Variants spanning the join of circular genomes are represented as
+          two variants one on each side of the join (position 0).
+      end:
+        type: string
+        format: int64
+        description: |-
+          The end position (exclusive), resulting in [start, end) closed-open
+          interval.
+          This is typically calculated by `start + referenceBases.length`.
+      reference_bases:
+        type: string
+        description: |-
+          The reference bases for this variant. They start at the given start
+          position.
+      alternate_bases:
+        type: array
+        items:
+          type: string
+        description: |-
+          The bases that appear instead of the reference bases. Multiple alternate
+          alleles are possible.
+      attributes:
+        $ref: '#/definitions/ga4ghAttributes'
+        description: A map of additional information about the Variant.
+      calls:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghCall'
+        description: |-
+          The variant calls for this particular variant. Each one represents the
+          determination of genotype with respect to this variant. `Call`s in this
+          array are implicitly associated with this `Variant`.
+      variant_type:
+        type: string
+        title: |-
+          The "variant_type" is used to denote e.g. structural variants.
+          Examples:
+            DUP  : duplication of sequence following "start"; not necessarily in situ
+            DEL  : deletion of sequence following "start"
+      svlen:
+        type: string
+        format: int64
+        title: |-
+          Length of the - if labeled as such in variant_type - structural variation.
+          Based on the use in VCFv4.2
+      cipos:
+        type: array
+        items:
+          type: integer
+          format: int32
+        title: |-
+          In the case of structural variants, start and end of the variant may not
+          be known with an exact base position. "cipos" provides an interval with
+          high confidence for the start position. The interval is provided by 0 or
+          2 signed integers which are added to the start position.
+          Based on the use in VCFv4.2
+          Example:
+            [ -12000, 1000 ]
+      ciend:
+        type: array
+        items:
+          type: integer
+          format: int32
+        title: |-
+          Similar to "cipos", but for the variant's end position (which is derived
+          from start + svlen).
+          Example:
+            [ -1000, 0 ]
+      filters_applied:
+        type: boolean
+        format: boolean
+        description: |-
+          True if filters were applied for this variant. VCF column 7 "FILTER"
+          any value other than the missing value.
+      filters_passed:
+        type: boolean
+        format: boolean
+        description: |-
+          True if all filters for this variant passed. VCF column 7 "FILTER"
+          value PASS.
+      filters_failed:
+        type: array
+        items:
+          type: string
+        description: |-
+          Zero or more filters that failed for this variant. VCF column 7 "FILTER"
+          shared across all alleles in the same VCF record.
+    description: |-
+      A `Variant` represents a change in DNA sequence relative to some reference.
+      For example, a variant could represent a SNP or an insertion.
+      Variants belong to a `VariantSet`.
+      This is equivalent to a row in VCF.
+  ga4ghVariantAnnotation:
+    type: object
+    properties:
+      id:
+        type: string
+        description: The ID of this VariantAnnotation.
+      variant_id:
+        type: string
+        description: The variant ID.
+      variant_annotation_set_id:
+        type: string
+        description: The ID of the variant annotation set this record belongs to.
+      created:
+        type: string
+        description: 'The time at which this record was created, in ISO 8601 format.'
+      transcript_effects:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghTranscriptEffect'
+        description: |-
+          The transcript effect annotation for the alleles of this variant. Each
+          one represents the effect of a single allele on a single transcript.
+      attributes:
+        $ref: '#/definitions/ga4ghAttributes'
+        description: A map of additional information about the Annotation.
+    description: |-
+      A `VariantAnnotation` record represents the result of comparing a variant to
+      a set of reference data.
+  ga4ghVariantAnnotationSet:
+    type: object
+    properties:
+      id:
+        type: string
+        title: The ID of the variant annotation set record
+      variant_set_id:
+        type: string
+        title: The ID of the variant set to which this annotation set belongs
+      name:
+        type: string
+        description: The variant annotation set name.
+      analysis:
+        $ref: '#/definitions/ga4ghAnalysis'
+        description: |-
+          Analysis details. It is essential to supply versions for all software and
+          reference data used.
+      attributes:
+        $ref: '#/definitions/ga4ghAttributes'
+        description: A map of additional information about the Annotation Set.
+    description: |-
+      A VariantAnnotationSet record groups VariantAnnotation records. It is derived
+      from a VariantSet and holds information describing the software and reference
+      data used in the annotation.
+  ga4ghVariantSet:
+    type: object
+    properties:
+      id:
+        type: string
+        description: The variant set ID.
+      name:
+        type: string
+        description: The variant set name.
+      dataset_id:
+        type: string
+        description: The ID of the dataset this variant set belongs to.
+      reference_set_id:
+        type: string
+        description: |-
+          The ID of the reference set that describes the sequences used by the
+          variants in this set.
+      metadata:
+        type: array
+        items:
+          $ref: '#/definitions/ga4ghVariantSetMetadata'
+        description: |-
+          Optional metadata associated with this variant set.
+          This array can be used to store information about the variant set, such as
+          information found in VCF header fields, that isn't already available in
+          first class fields such as "name".
+    description: |-
+      A VariantSet is a collection of variants and variant calls intended to be
+      analyzed together.
+  ga4ghVariantSetMetadata:
+    type: object
+    properties:
+      key:
+        type: string
+        description: The top-level key.
+      value:
+        type: string
+        description: The value field for simple metadata.
+      id:
+        type: string
+        title: |-
+          User-provided ID field, not enforced by this API.
+          Two or more pieces of structured metadata with identical
+          id and key fields are considered equivalent.
+          FIXME: If it's not enforced, then why can't it be null?
+      type:
+        type: string
+        description: The type of data.
+      number:
+        type: string
+        description: |-
+          The number of values that can be included in a field described by this
+          metadata.
+      description:
+        type: string
+        description: A textual description of this metadata.
+      attributes:
+        $ref: '#/definitions/ga4ghAttributes'
+        description: A map of additional information about the metadata record.
+    description: This metadata represents VCF header information.
+  googleprotobufNullValue:
+    type: string
+    enum:
+      - NULL_VALUE
+    default: NULL_VALUE
+    description: |-
+      `NullValue` is a singleton enumeration to represent the null value for the
+      `Value` type union.
+
+       The JSON representation for `NullValue` is JSON `null`.
+
+       - NULL_VALUE: Null value.
+  protobufListValue:
+    type: object
+    properties:
+      values:
+        type: array
+        items:
+          $ref: '#/definitions/protobufValue'
+        description: Repeated field of dynamically typed values.
+    description: |-
+      `ListValue` is a wrapper around a repeated field of values.
+
+      The JSON representation for `ListValue` is JSON array.
+  protobufStruct:
+    type: object
+    properties:
+      fields:
+        type: object
+        additionalProperties:
+          $ref: '#/definitions/protobufValue'
+        description: Unordered map of dynamically typed values.
+    description: |-
+      `Struct` represents a structured data value, consisting of fields
+      which map to dynamically typed values. In some languages, `Struct`
+      might be supported by a native representation. For example, in
+      scripting languages like JS a struct is represented as an
+      object. The details of that representation are described together
+      with the proto support for the language.
+
+      The JSON representation for `Struct` is JSON object.
+  protobufValue:
+    type: object
+    properties:
+      null_value:
+        $ref: '#/definitions/googleprotobufNullValue'
+        description: Represents a null value.
+      number_value:
+        type: number
+        format: double
+        description: Represents a double value.
+      string_value:
+        type: string
+        description: Represents a string value.
+      bool_value:
+        type: boolean
+        format: boolean
+        description: Represents a boolean value.
+      struct_value:
+        $ref: '#/definitions/protobufStruct'
+        description: Represents a structured value.
+      list_value:
+        $ref: '#/definitions/protobufListValue'
+        description: Represents a repeated `Value`.
+    description: |-
+      `Value` represents a dynamically typed value which can be either
+      null, a number, a string, a boolean, a recursive struct value, or a
+      list of values. A producer of value is expected to set one of that
+      variants, absence of any variant indicates an error.
+
+      The JSON representation for `Value` is JSON value.
+
