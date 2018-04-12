@@ -29,7 +29,7 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghAnnouncePeerResponse'
+            $ref: '#/definitions/AnnouncePeerResponse'
       tags:
         - PeerService
   /biosamples/search:
@@ -43,13 +43,13 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghSearchBiosamplesResponse'
+            $ref: '#/definitions/SearchBiosamplesResponse'
       parameters:
         - name: body
           in: body
           required: true
           schema:
-            $ref: '#/definitions/ga4ghSearchBiosamplesRequest'
+            $ref: '#/definitions/SearchBiosamplesRequest'
       tags:
         - BioMetadataService
   '/biosamples/{biosample_id}':
@@ -62,7 +62,7 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghBiosample'
+            $ref: '#/definitions/Biosample'
       parameters:
         - name: biosample_id
           in: path
@@ -82,13 +82,13 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghSearchCallSetsResponse'
+            $ref: '#/definitions/SearchCallSetsResponse'
       parameters:
         - name: body
           in: body
           required: true
           schema:
-            $ref: '#/definitions/ga4ghSearchCallSetsRequest'
+            $ref: '#/definitions/SearchCallSetsRequest'
       tags:
         - VariantService
   '/callsets/{call_set_id}':
@@ -100,7 +100,7 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghCallSet'
+            $ref: '#/definitions/CallSet'
       parameters:
         - name: call_set_id
           in: path
@@ -120,13 +120,13 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghSearchDatasetsResponse'
+            $ref: '#/definitions/SearchDatasetsResponse'
       parameters:
         - name: body
           in: body
           required: true
           schema:
-            $ref: '#/definitions/ga4ghSearchDatasetsRequest'
+            $ref: '#/definitions/SearchDatasetsRequest'
       tags:
         - MetadataService
   '/datasets/{dataset_id}':
@@ -140,7 +140,7 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghDataset'
+            $ref: '#/definitions/Dataset'
       parameters:
         - name: dataset_id
           in: path
@@ -159,13 +159,13 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghSearchExpressionLevelsResponse'
+            $ref: '#/definitions/SearchExpressionLevelsResponse'
       parameters:
         - name: body
           in: body
           required: true
           schema:
-            $ref: '#/definitions/ga4ghSearchExpressionLevelsRequest'
+            $ref: '#/definitions/SearchExpressionLevelsRequest'
       tags:
         - RnaQuantificationService
   '/expressionlevels/{expression_level_id}':
@@ -179,7 +179,7 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghExpressionLevel'
+            $ref: '#/definitions/ExpressionLevel'
       parameters:
         - name: expression_level_id
           in: path
@@ -199,13 +199,13 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghSearchGenotypePhenotypeResponse'
+            $ref: '#/definitions/SearchGenotypePhenotypeResponse'
       parameters:
         - name: body
           in: body
           required: true
           schema:
-            $ref: '#/definitions/ga4ghSearchGenotypePhenotypeRequest'
+            $ref: '#/definitions/SearchGenotypePhenotypeRequest'
       tags:
         - GenotypePhenotypeService
   /features/search:
@@ -220,13 +220,13 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghSearchFeaturesResponse'
+            $ref: '#/definitions/SearchFeaturesResponse'
       parameters:
         - name: body
           in: body
           required: true
           schema:
-            $ref: '#/definitions/ga4ghSearchFeaturesRequest'
+            $ref: '#/definitions/SearchFeaturesRequest'
       tags:
         - SequenceAnnotationService
   '/features/{feature_id}':
@@ -238,7 +238,7 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghFeature'
+            $ref: '#/definitions/Feature'
       parameters:
         - name: feature_id
           in: path
@@ -258,13 +258,13 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghSearchFeatureSetsResponse'
+            $ref: '#/definitions/SearchFeatureSetsResponse'
       parameters:
         - name: body
           in: body
           required: true
           schema:
-            $ref: '#/definitions/ga4ghSearchFeatureSetsRequest'
+            $ref: '#/definitions/SearchFeatureSetsRequest'
       tags:
         - SequenceAnnotationService
   '/featuresets/{feature_set_id}':
@@ -276,7 +276,7 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghFeatureSet'
+            $ref: '#/definitions/FeatureSet'
       parameters:
         - name: feature_set_id
           in: path
@@ -296,13 +296,13 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghSearchIndividualsResponse'
+            $ref: '#/definitions/SearchIndividualsResponse'
       parameters:
         - name: body
           in: body
           required: true
           schema:
-            $ref: '#/definitions/ga4ghSearchIndividualsRequest'
+            $ref: '#/definitions/SearchIndividualsRequest'
       tags:
         - BioMetadataService
   '/individuals/{individual_id}':
@@ -315,7 +315,7 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghIndividual'
+            $ref: '#/definitions/Individual'
       parameters:
         - name: individual_id
           in: path
@@ -337,7 +337,7 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghGetInfoResponse'
+            $ref: '#/definitions/GetInfoResponse'
       tags:
         - PeerService
   /peers/list:
@@ -355,13 +355,13 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghListPeersResponse'
+            $ref: '#/definitions/ListPeersResponse'
       parameters:
         - name: body
           in: body
           required: true
           schema:
-            $ref: '#/definitions/ga4ghListPeersRequest'
+            $ref: '#/definitions/ListPeersRequest'
       tags:
         - PeerService
   /phenotypeassociationsets/search:
@@ -376,13 +376,13 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghSearchPhenotypeAssociationSetsResponse'
+            $ref: '#/definitions/SearchPhenotypeAssociationSetsResponse'
       parameters:
         - name: body
           in: body
           required: true
           schema:
-            $ref: '#/definitions/ga4ghSearchPhenotypeAssociationSetsRequest'
+            $ref: '#/definitions/SearchPhenotypeAssociationSetsRequest'
       tags:
         - GenotypePhenotypeService
   /phenotypes/search:
@@ -397,13 +397,13 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghSearchPhenotypesResponse'
+            $ref: '#/definitions/SearchPhenotypesResponse'
       parameters:
         - name: body
           in: body
           required: true
           schema:
-            $ref: '#/definitions/ga4ghSearchPhenotypesRequest'
+            $ref: '#/definitions/SearchPhenotypesRequest'
       tags:
         - GenotypePhenotypeService
   /references/search:
@@ -418,13 +418,13 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghSearchReferencesResponse'
+            $ref: '#/definitions/SearchReferencesResponse'
       parameters:
         - name: body
           in: body
           required: true
           schema:
-            $ref: '#/definitions/ga4ghSearchReferencesRequest'
+            $ref: '#/definitions/SearchReferencesRequest'
       tags:
         - ReferenceService
   '/references/{reference_id}':
@@ -438,7 +438,7 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghReference'
+            $ref: '#/definitions/Reference'
       parameters:
         - name: reference_id
           in: path
@@ -457,7 +457,7 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghListReferenceBasesResponse'
+            $ref: '#/definitions/ListReferenceBasesResponse'
       parameters:
         - name: reference_id
           in: path
@@ -467,7 +467,7 @@ paths:
           in: body
           required: true
           schema:
-            $ref: '#/definitions/ga4ghListReferenceBasesRequest'
+            $ref: '#/definitions/ListReferenceBasesRequest'
       tags:
         - ReferenceService
   /referencesets/search:
@@ -482,13 +482,13 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghSearchReferenceSetsResponse'
+            $ref: '#/definitions/SearchReferenceSetsResponse'
       parameters:
         - name: body
           in: body
           required: true
           schema:
-            $ref: '#/definitions/ga4ghSearchReferenceSetsRequest'
+            $ref: '#/definitions/SearchReferenceSetsRequest'
       tags:
         - ReferenceService
   '/referencesets/{reference_set_id}':
@@ -502,7 +502,7 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghReferenceSet'
+            $ref: '#/definitions/ReferenceSet'
       parameters:
         - name: reference_set_id
           in: path
@@ -522,13 +522,13 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghSearchRnaQuantificationsResponse'
+            $ref: '#/definitions/SearchRnaQuantificationsResponse'
       parameters:
         - name: body
           in: body
           required: true
           schema:
-            $ref: '#/definitions/ga4ghSearchRnaQuantificationsRequest'
+            $ref: '#/definitions/SearchRnaQuantificationsRequest'
       tags:
         - RnaQuantificationService
   '/rnaquantifications/{rna_quantification_id}':
@@ -542,7 +542,7 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghRnaQuantification'
+            $ref: '#/definitions/RnaQuantification'
       parameters:
         - name: rna_quantification_id
           in: path
@@ -562,13 +562,13 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghSearchRnaQuantificationSetsResponse'
+            $ref: '#/definitions/SearchRnaQuantificationSetsResponse'
       parameters:
         - name: body
           in: body
           required: true
           schema:
-            $ref: '#/definitions/ga4ghSearchRnaQuantificationSetsRequest'
+            $ref: '#/definitions/SearchRnaQuantificationSetsRequest'
       tags:
         - RnaQuantificationService
   '/rnaquantificationsets/{rna_quantification_set_id}':
@@ -582,7 +582,7 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghRnaQuantificationSet'
+            $ref: '#/definitions/RnaQuantificationSet'
       parameters:
         - name: rna_quantification_set_id
           in: path
@@ -614,13 +614,13 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghSearchVariantAnnotationsResponse'
+            $ref: '#/definitions/SearchVariantAnnotationsResponse'
       parameters:
         - name: body
           in: body
           required: true
           schema:
-            $ref: '#/definitions/ga4ghSearchVariantAnnotationsRequest'
+            $ref: '#/definitions/SearchVariantAnnotationsRequest'
       tags:
         - AlleleAnnotationService
   /variantannotationsets/search:
@@ -635,13 +635,13 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghSearchVariantAnnotationSetsResponse'
+            $ref: '#/definitions/SearchVariantAnnotationSetsResponse'
       parameters:
         - name: body
           in: body
           required: true
           schema:
-            $ref: '#/definitions/ga4ghSearchVariantAnnotationSetsRequest'
+            $ref: '#/definitions/SearchVariantAnnotationSetsRequest'
       tags:
         - AlleleAnnotationService
   '/variantannotationsets/{variant_annotation_set_id}':
@@ -655,7 +655,7 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghVariantAnnotationSet'
+            $ref: '#/definitions/VariantAnnotationSet'
       parameters:
         - name: variant_annotation_set_id
           in: path
@@ -675,13 +675,13 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghSearchVariantsResponse'
+            $ref: '#/definitions/SearchVariantsResponse'
       parameters:
         - name: body
           in: body
           required: true
           schema:
-            $ref: '#/definitions/ga4ghSearchVariantsRequest'
+            $ref: '#/definitions/SearchVariantsRequest'
       tags:
         - VariantService
   '/variants/{variant_id}':
@@ -693,7 +693,7 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghVariant'
+            $ref: '#/definitions/Variant'
       parameters:
         - name: variant_id
           in: path
@@ -713,13 +713,13 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghSearchVariantSetsResponse'
+            $ref: '#/definitions/SearchVariantSetsResponse'
       parameters:
         - name: body
           in: body
           required: true
           schema:
-            $ref: '#/definitions/ga4ghSearchVariantSetsRequest'
+            $ref: '#/definitions/SearchVariantSetsRequest'
       tags:
         - VariantService
   '/variantsets/{variant_set_id}':
@@ -733,7 +733,7 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghVariantSet'
+            $ref: '#/definitions/VariantSet'
       parameters:
         - name: variant_set_id
           in: path
@@ -753,13 +753,13 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghSearchContinuousResponse'
+            $ref: '#/definitions/SearchContinuousResponse'
       parameters:
         - name: body
           in: body
           required: true
           schema:
-            $ref: '#/definitions/ga4ghSearchContinuousRequest'
+            $ref: '#/definitions/SearchContinuousRequest'
       tags:
         - SequenceAnnotationService
   /v0.6.0a8/continuoussets/search:
@@ -774,13 +774,13 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghSearchContinuousSetsResponse'
+            $ref: '#/definitions/SearchContinuousSetsResponse'
       parameters:
         - name: body
           in: body
           required: true
           schema:
-            $ref: '#/definitions/ga4ghSearchContinuousSetsRequest'
+            $ref: '#/definitions/SearchContinuousSetsRequest'
       tags:
         - SequenceAnnotationService
   '/v0.6.0a8/continuoussets/{continuous_set_id}':
@@ -792,7 +792,7 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: '#/definitions/ga4ghContinuousSet'
+            $ref: '#/definitions/ContinuousSet'
       parameters:
         - name: continuous_set_id
           in: path
@@ -801,7 +801,7 @@ paths:
       tags:
         - SequenceAnnotationService
 definitions:
-  ga4ghAge:
+  Age:
     type: object
     properties:
       age:
@@ -813,14 +813,14 @@ definitions:
           time interval, e.g. 1967-11-21/P40Y10M05D)
           TODO: Anonymous reference time attribute/pointer?
       age_class:
-        $ref: '#/definitions/ga4ghOntologyTerm'
+        $ref: '#/definitions/OntologyTerm'
         title: |-
           An age class, e.g. corresponding to the use of "age of onset" in HPO.
           HPO is recommended, for example, subclasses of
           http://purl.obolibrary.org/obo/HP_0003674
           Example:
            age_class : { term_id : "HP:0003596", term : "Middle age onset" }
-  ga4ghAlleleLocation:
+  AlleleLocation:
     type: object
     properties:
       start:
@@ -841,7 +841,7 @@ definitions:
       An allele location record holds the location of an allele relative to a non -
       genomic coordinate system such as a CDS or protein and holds the reference
       and alternate sequence where appropriate
-  ga4ghAnalysis:
+  Analysis:
     type: object
     properties:
       id:
@@ -868,13 +868,13 @@ definitions:
           type: string
         description: The software run to generate this analysis.
       attributes:
-        $ref: '#/definitions/ga4ghAttributes'
+        $ref: '#/definitions/Attributes'
         description: A map of additional analysis information.
     description: |-
       An analysis contains an interpretation of one or several experiments. (e.g.
       SNVs, copy number variations, methylation status) together with information
       about the methodology used.
-  ga4ghAnalysisResult:
+  AnalysisResult:
     type: object
     properties:
       analysis_id:
@@ -890,7 +890,7 @@ definitions:
     description: |-
       An AnalysisResult record holds the output of a prediction package such as
       SIFT on a specific allele.
-  ga4ghAnnouncePeerResponse:
+  AnnouncePeerResponse:
     type: object
     properties:
       success:
@@ -900,12 +900,12 @@ definitions:
           This message notifies the client whether the AnnouncePeerRequest
           was well formed.
       attributes:
-        $ref: '#/definitions/ga4ghAttributes'
+        $ref: '#/definitions/Attributes'
         description: |-
           Other information regarding an AnnouncePeerRequest can be sent in
           the attributes field.
     description: This is the response from `POST /peers/announce`.
-  ga4ghAttributeValue:
+  AttributeValue:
     type: object
     properties:
       string_value:
@@ -923,42 +923,42 @@ definitions:
         type: number
         format: double
       external_identifier:
-        $ref: '#/definitions/ga4ghExternalIdentifier'
+        $ref: '#/definitions/ExternalIdentifier'
       ontology_term:
-        $ref: '#/definitions/ga4ghOntologyTerm'
+        $ref: '#/definitions/OntologyTerm'
       experiment:
-        $ref: '#/definitions/ga4ghExperiment'
+        $ref: '#/definitions/Experiment'
       program:
-        $ref: '#/definitions/ga4ghProgram'
+        $ref: '#/definitions/Program'
       analysis:
-        $ref: '#/definitions/ga4ghAnalysis'
+        $ref: '#/definitions/Analysis'
       null_value:
-        $ref: '#/definitions/ga4ghNullValue'
+        $ref: '#/definitions/NullValue'
       attributes:
-        $ref: '#/definitions/ga4ghAttributes'
+        $ref: '#/definitions/Attributes'
       attribute_list:
-        $ref: '#/definitions/ga4ghAttributeValueList'
+        $ref: '#/definitions/AttributeValueList'
     description: |-
       Type defining a collection of attributes associated with various protocol
       records. Each attribute is a name that maps to an array of one or more
       values. Values are chosen from both internal protobuf types and GA4GH.
        Values should be split into array elements instead of using a separator
       syntax that needs to parsed.
-  ga4ghAttributeValueList:
+  AttributeValueList:
     type: object
     properties:
       values:
         type: array
         items:
-          $ref: '#/definitions/ga4ghAttributeValue'
-  ga4ghAttributes:
+          $ref: '#/definitions/AttributeValue'
+  Attributes:
     type: object
     properties:
       attr:
         type: object
         additionalProperties:
-          $ref: '#/definitions/ga4ghAttributeValueList'
-  ga4ghBiosample:
+          $ref: '#/definitions/AttributeValueList'
+  Biosample:
     type: object
     properties:
       id:
@@ -978,7 +978,7 @@ definitions:
           The biosample's description. This attribute contains human readable text.
           The "description" attributes should not contain any structured data.
       disease:
-        $ref: '#/definitions/ga4ghOntologyTerm'
+        $ref: '#/definitions/OntologyTerm'
         description: OntologyTerm describing the primary disease associated with this Biosample.
       created:
         type: string
@@ -994,16 +994,16 @@ definitions:
         type: string
         description: The individual this biosample was derived from.
       attributes:
-        $ref: '#/definitions/ga4ghAttributes'
+        $ref: '#/definitions/Attributes'
         description: A map of additional information about the Biosample.
       individual_age_at_collection:
-        $ref: '#/definitions/ga4ghAge'
+        $ref: '#/definitions/Age'
         description: |-
           An age object describing the age of the individual this biosample was
           derived from at the time of collection. The Age object allows the encoding
           of the age either as ISO8601 duraion or time interval (preferred), or
           as ontology term object.
-  ga4ghCall:
+  Call:
     type: object
     properties:
       call_set_name:
@@ -1056,7 +1056,7 @@ definitions:
           log10(P(data | genotype)), analogous to the GL tag in the VCF spec. The
           value ordering is defined by the GL tag in the VCF spec.
       attributes:
-        $ref: '#/definitions/ga4ghAttributes'
+        $ref: '#/definitions/Attributes'
         description: A map of additional information about the Call.
     description: |-
       A `Call` represents the determination of genotype with respect to a
@@ -1065,7 +1065,7 @@ definitions:
       It may include associated information such as quality
       and phasing. For example, a call might assign a probability of 0.32 to
       the occurrence of a SNP named rs1234 in a call set with the name NA12345.
-  ga4ghCallSet:
+  CallSet:
     type: object
     properties:
       id:
@@ -1093,12 +1093,12 @@ definitions:
           The time at which this call set was last updated in
           milliseconds from the epoch.
       attributes:
-        $ref: '#/definitions/ga4ghAttributes'
+        $ref: '#/definitions/Attributes'
         description: A map of additional information about the Call Set.
     description: |-
       A CallSet is a collection of calls that were generated by the same analysis
       of the same sample.
-  ga4ghContinuous:
+  Continuous:
     type: object
     properties:
       start:
@@ -1125,7 +1125,7 @@ definitions:
       such as those produced experimentally (e.g. ChIP-Seq data) or through 
       calculations (e.g. conservation scores). It can be used, for example,
       to share data from Wiggle, BigWig, and BedGraph sources.
-  ga4ghContinuousSet:
+  ContinuousSet:
     type: object
     properties:
       id:
@@ -1148,14 +1148,14 @@ definitions:
           The source URI describing the file from which this annotation set was
           generated, if any.
       attributes:
-        $ref: '#/definitions/ga4ghAttributes'
+        $ref: '#/definitions/Attributes'
         description: A map of additional Feature Set information.
     description: |-
       A set of Continous messages. Continuous values can be sent
       as a single Continuous message containing all values or a series
       of Continuous messages to either limit the size of the values array
       or to skip NaN values.
-  ga4ghDataset:
+  Dataset:
     type: object
     properties:
       id:
@@ -1168,20 +1168,20 @@ definitions:
         type: string
         description: 'Additional, human-readable information on the dataset.'
       attributes:
-        $ref: '#/definitions/ga4ghAttributes'
+        $ref: '#/definitions/Attributes'
         description: A map of additional dataset information.
     description: |-
       A Dataset is a collection of related data of multiple types.
       Data providers decide how to group data into datasets.
       See [Metadata API](../api/metadata.html) for a more detailed discussion.
-  ga4ghEnvironmentalContext:
+  EnvironmentalContext:
     type: object
     properties:
       id:
         type: string
         description: The Environment ID.
       environment_type:
-        $ref: '#/definitions/ga4ghOntologyTerm'
+        $ref: '#/definitions/OntologyTerm'
         title: |-
           Examples of some environment types could be drawn from:
           Ontology for Biomedical Investigations (OBI): http://purl.obofoundry.org/obo/obi/browse
@@ -1199,11 +1199,11 @@ definitions:
       For example, a controlled term for a drug, or perhaps an instance of a
       complex environment including temperature and air quality, or perhaps
       the anatomical environment (gut vs tissue type vs whole organism).
-  ga4ghEvidence:
+  Evidence:
     type: object
     properties:
       evidence_type:
-        $ref: '#/definitions/ga4ghOntologyTerm'
+        $ref: '#/definitions/OntologyTerm'
         title: ECO or OBI is recommended
       description:
         type: string
@@ -1219,11 +1219,11 @@ definitions:
       Evidence for the phenotype association.
       This is also a stub for further expansion.  We should consider moving this into
       it's own schema.
-  ga4ghEvidenceQuery:
+  EvidenceQuery:
     type: object
     properties:
       evidenceType:
-        $ref: '#/definitions/ga4ghOntologyTerm'
+        $ref: '#/definitions/OntologyTerm'
         title: ECO or OBI is recommended
       description:
         type: string
@@ -1231,10 +1231,10 @@ definitions:
       external_identifiers:
         type: array
         items:
-          $ref: '#/definitions/ga4ghExternalIdentifier'
+          $ref: '#/definitions/ExternalIdentifier'
         title: Only match Evidence messages that have any of these external identifiers
     description: Evidence for the phenotype association.
-  ga4ghExperiment:
+  Experiment:
     type: object
     properties:
       id:
@@ -1302,10 +1302,10 @@ definitions:
           flowcell-barcode
           or slide unique identifier.
       attributes:
-        $ref: '#/definitions/ga4ghAttributes'
+        $ref: '#/definitions/Attributes'
         description: A map of additional experiment information.
     description: An experimental preparation of a sample.
-  ga4ghExpressionLevel:
+  ExpressionLevel:
     type: object
     properties:
       id:
@@ -1330,7 +1330,7 @@ definitions:
         format: boolean
         description: True if the expression value is a normalized value.
       units:
-        $ref: '#/definitions/ga4ghExpressionUnit'
+        $ref: '#/definitions/ExpressionUnit'
         description: The units of the expression value if one is given.
       score:
         type: number
@@ -1345,17 +1345,17 @@ definitions:
         format: float
         description: Upper bound of the confidence interval on the expression value.
       attributes:
-        $ref: '#/definitions/ga4ghAttributes'
+        $ref: '#/definitions/Attributes'
         description: A map of additional information about the Expression Level.
     description: The actual numerical quantification for each feature.
-  ga4ghExpressionUnit:
+  ExpressionUnit:
     type: string
     enum:
       - EXPRESSION_UNIT_UNSPECIFIED
       - FPKM
       - TPM
     default: EXPRESSION_UNIT_UNSPECIFIED
-  ga4ghExternalIdentifier:
+  ExternalIdentifier:
     type: object
     properties:
       database:
@@ -1368,7 +1368,7 @@ definitions:
         type: string
         description: 'The version of the object or the database, e.g. `78`.'
     title: Identifier from a public database
-  ga4ghFeature:
+  Feature:
     type: object
     properties:
       id:
@@ -1416,15 +1416,15 @@ definitions:
           interval. This is typically calculated by `start +
           reference_bases.length`.
       strand:
-        $ref: '#/definitions/ga4ghStrand'
+        $ref: '#/definitions/Strand'
         description: The strand on which the feature is present.
       feature_type:
-        $ref: '#/definitions/ga4ghOntologyTerm'
+        $ref: '#/definitions/OntologyTerm'
         description: |-
           Feature that is annotated by this region.  Normally, this will be a term
           in the Sequence Ontology.
       attributes:
-        $ref: '#/definitions/ga4ghAttributes'
+        $ref: '#/definitions/Attributes'
         description: |-
           Name/value attributes of the annotation.  Attribute names follow the GFF3
           naming convention of reserved names starting with an upper cases character,
@@ -1436,7 +1436,7 @@ definitions:
     description: |-
       Node in the annotation graph that annotates a contiguous region of a
       sequence.
-  ga4ghFeaturePhenotypeAssociation:
+  FeaturePhenotypeAssociation:
     type: object
     properties:
       id:
@@ -1464,12 +1464,12 @@ definitions:
       evidence:
         type: array
         items:
-          $ref: '#/definitions/ga4ghEvidence'
+          $ref: '#/definitions/Evidence'
         description: |-
           The evidence for this specific instance of association between the
           features and the phenotype.
       phenotype:
-        $ref: '#/definitions/ga4ghPhenotypeInstance'
+        $ref: '#/definitions/PhenotypeInstance'
         description: The phenotypic component of this association.
       description:
         type: string
@@ -1477,7 +1477,7 @@ definitions:
       environmental_contexts:
         type: array
         items:
-          $ref: '#/definitions/ga4ghEnvironmentalContext'
+          $ref: '#/definitions/EnvironmentalContext'
         title: |-
           The context in which the phenotype arises.
           Multiple contexts can be specified - these are assumed to all hold together
@@ -1491,7 +1491,7 @@ definitions:
       The instance of association allows us to link a feature to a phenotype,
       multiple times, each bearing potentially different levels of confidence,
       such as resulting from alternative experiments and analysis.
-  ga4ghFeatureSet:
+  FeatureSet:
     type: object
     properties:
       id:
@@ -1514,10 +1514,10 @@ definitions:
           The source URI describing the file from which this annotation set was
           generated, if any.
       attributes:
-        $ref: '#/definitions/ga4ghAttributes'
+        $ref: '#/definitions/Attributes'
         description: A map of additional Feature Set information.
     description: A set of sequence features annotations.
-  ga4ghGetInfoResponse:
+  GetInfoResponse:
     type: object
     properties:
       protocol_version:
@@ -1526,10 +1526,10 @@ definitions:
           The string of the protocol version offered by the service. For
           example, "0.6.0a10".
       attributes:
-        $ref: '#/definitions/ga4ghAttributes'
+        $ref: '#/definitions/Attributes'
         description: A map of additional information about the service can be included.
     description: This is the response from `GET /info`.
-  ga4ghHGVSAnnotation:
+  HGVSAnnotation:
     type: object
     properties:
       genomic:
@@ -1547,7 +1547,7 @@ definitions:
          lies within a transcript
        - Descriptions at protein level should be provided when the allele
          lies within the translated sequence or stop codon.
-  ga4ghIndividual:
+  Individual:
     type: object
     properties:
       id:
@@ -1577,7 +1577,7 @@ definitions:
           The :ref:`ISO 8601<metadata_date_time>` time at which this Individual record
           was updated.
       species:
-        $ref: '#/definitions/ga4ghOntologyTerm'
+        $ref: '#/definitions/OntologyTerm'
         title: |-
           For a representation of an NCBI Taxon ID as an OntologyTerm, see
           NCBITaxon Ontology
@@ -1586,7 +1586,7 @@ definitions:
           this is NCBITaxon:9606, and therefore:
             species : { term_id: "NCBITaxon:9606", term : "Homo sapiens" }
       sex:
-        $ref: '#/definitions/ga4ghOntologyTerm'
+        $ref: '#/definitions/OntologyTerm'
         title: |-
           The genetic sex of this individual.
           Use `null` when unknown or not applicable.
@@ -1594,9 +1594,9 @@ definitions:
           Example:
             sex : { term_id: "PATO:0020000", term : "female genetic sex" }
       attributes:
-        $ref: '#/definitions/ga4ghAttributes'
+        $ref: '#/definitions/Attributes'
         description: A map of additional information regarding the Individual.
-  ga4ghListPeersRequest:
+  ListPeersRequest:
     type: object
     properties:
       page_size:
@@ -1612,13 +1612,13 @@ definitions:
           To get the next page of results, set this parameter to the value of
           `next_page_token` from the previous response.
     description: This request maps to the body of `POST /peers/list`.
-  ga4ghListPeersResponse:
+  ListPeersResponse:
     type: object
     properties:
       peers:
         type: array
         items:
-          $ref: '#/definitions/ga4ghPeer'
+          $ref: '#/definitions/Peer'
         description: |-
           The list of `Peer` messages presented by the server. They
           are not expected in any particular order.
@@ -1631,7 +1631,7 @@ definitions:
     description: |-
       This is the response from `POST /peers/list` expressed as
       JSON.
-  ga4ghListReferenceBasesRequest:
+  ListReferenceBasesRequest:
     type: object
     properties:
       reference_id:
@@ -1660,7 +1660,7 @@ definitions:
     description: |-
       This request retrieves a region of a reference genome when sent to
       the `/listreferencebases` endpoint.
-  ga4ghListReferenceBasesResponse:
+  ListReferenceBasesResponse:
     type: object
     properties:
       offset:
@@ -1681,13 +1681,13 @@ definitions:
           Provide this value in a subsequent request to return the next page of
           results. This field will be empty if there aren't any additional results.
     description: The response from `POST /listreferencebases` expressed as JSON.
-  ga4ghNullValue:
+  NullValue:
     type: string
     enum:
       - NULL_VALUE
     default: NULL_VALUE
     description: ' - NULL_VALUE: Null value.'
-  ga4ghOntologyTerm:
+  OntologyTerm:
     type: object
     properties:
       term_id:
@@ -1703,7 +1703,7 @@ definitions:
     title: |-
       An ontology term describing an attribute. (e.g. the phenotype attribute
       'polydactyly' from HPO)
-  ga4ghPeer:
+  Peer:
     type: object
     properties:
       url:
@@ -1723,12 +1723,12 @@ definitions:
           and a port.
             http://myapp.mycloudservice.com:8080/data/ga4gh
       attributes:
-        $ref: '#/definitions/ga4ghAttributes'
+        $ref: '#/definitions/Attributes'
         description: A map of additional information about the service can be included.
     description: |-
       Peers allow clients to represent services to each other so
       ad-hoc networks can be easily constructed.
-  ga4ghPhenotypeAssociationSet:
+  PhenotypeAssociationSet:
     type: object
     properties:
       id:
@@ -1746,26 +1746,26 @@ definitions:
           $ref: '#/definitions/protobufListValue'
         description: Optional additional information for this phenotype association set.
     description: The top level container for phenotype association data.
-  ga4ghPhenotypeInstance:
+  PhenotypeInstance:
     type: object
     properties:
       id:
         type: string
         description: The Phenotype ID.
       type:
-        $ref: '#/definitions/ga4ghOntologyTerm'
+        $ref: '#/definitions/OntologyTerm'
         title: HPO is recommended
       qualifier:
         type: array
         items:
-          $ref: '#/definitions/ga4ghOntologyTerm'
+          $ref: '#/definitions/OntologyTerm'
         title: |-
           PATO is recommended.  Often this qualifier might be for abnormal/normal,
           or severity.
           For example, severe: http://purl.obolibrary.org/obo/PATO_0000396
           or abnormal: http://purl.obolibrary.org/obo/PATO_0000460
       age_of_onset:
-        $ref: '#/definitions/ga4ghOntologyTerm'
+        $ref: '#/definitions/OntologyTerm'
         title: |-
           HPO is recommended, for example, subclasses of
           http://www.human-phenotype-ontology.org/hpoweb/showterm?id=HP:0011007
@@ -1784,7 +1784,7 @@ definitions:
       An association to a phenotype and related information.
       This record is intended primarily to be used in conjunction with variants, but
       the record can also be composed with other kinds of entities such as diseases
-  ga4ghProgram:
+  Program:
     type: object
     properties:
       command_line:
@@ -1803,7 +1803,7 @@ definitions:
         type: string
         description: The version of the program run.
     description: A Program describes software used in data processing or analysis.
-  ga4ghReference:
+  Reference:
     type: object
     properties:
       id:
@@ -1856,7 +1856,7 @@ definitions:
           the
           reference this message was derived from.
       species:
-        $ref: '#/definitions/ga4ghOntologyTerm'
+        $ref: '#/definitions/OntologyTerm'
         title: |-
           For a representation of an NCBI Taxon ID as an OntologyTerm, see
           NCBITaxon Ontology
@@ -1865,7 +1865,7 @@ definitions:
           this is NCBITaxon:9606, which has the URI
           http://purl.obolibrary.org/obo/NCBITaxon_9606
       attributes:
-        $ref: '#/definitions/ga4ghAttributes'
+        $ref: '#/definitions/Attributes'
         description: A map of additional information.
     description: |-
       A `Reference` is a canonical assembled contig, intended to act as a
@@ -1873,7 +1873,7 @@ definitions:
       `Reference` might represent the human chromosome 1, for instance.
 
       `Reference` s are designed to be immutable.
-  ga4ghReferenceSet:
+  ReferenceSet:
     type: object
     properties:
       id:
@@ -1892,7 +1892,7 @@ definitions:
           all the strings concatenated together. Express the hash as a lower-case
           hexadecimal string.
       species:
-        $ref: '#/definitions/ga4ghOntologyTerm'
+        $ref: '#/definitions/OntologyTerm'
         title: |-
           For a representation of an NCBI Taxon ID as an OntologyTerm, see
           NCBITaxon Ontology
@@ -1926,13 +1926,13 @@ definitions:
           additional sequences, or some of the sequences within it are derived
           (see the definition of `isDerived` in `Reference`).
       attributes:
-        $ref: '#/definitions/ga4ghAttributes'
+        $ref: '#/definitions/Attributes'
         description: A map of additional information.
     description: |-
       A `ReferenceSet` is a set of `Reference` s which typically comprise a
       reference assembly, such as `GRCh38`. A `ReferenceSet` defines a common
       coordinate space for comparing reference-aligned experimental data.
-  ga4ghRnaQuantification:
+  RnaQuantification:
     type: object
     properties:
       id:
@@ -1957,7 +1957,7 @@ definitions:
       programs:
         type: array
         items:
-          $ref: '#/definitions/ga4ghProgram'
+          $ref: '#/definitions/Program'
         description: Programs can be used to track the provenance of how read data was quantified.
       feature_set_ids:
         type: array
@@ -1968,10 +1968,10 @@ definitions:
         type: string
         description: ID of the containing RnaQuantificationSet.
       attributes:
-        $ref: '#/definitions/ga4ghAttributes'
+        $ref: '#/definitions/Attributes'
         description: A map of additional information about the Quantification.
     title: Top level identifying information
-  ga4ghRnaQuantificationSet:
+  RnaQuantificationSet:
     type: object
     properties:
       id:
@@ -1984,7 +1984,7 @@ definitions:
         type: string
         description: The RNA quantification set name.
       attributes:
-        $ref: '#/definitions/ga4ghAttributes'
+        $ref: '#/definitions/Attributes'
         description: A map of additional information about the Quantification Set.
     description: |-
       A collection of associated RNAQuantifications.  Typically this will be all
@@ -1992,7 +1992,7 @@ definitions:
       course experiment would be described by a RnaQuantificationSet with the
       individual RNASeq experiments of the time point being represented as the
       member RnaQuantifications.
-  ga4ghSearchBiosamplesRequest:
+  SearchBiosamplesRequest:
     type: object
     properties:
       dataset_id:
@@ -2019,13 +2019,13 @@ definitions:
     description: |-
       *********************  /biosamples ********************************
       This is the request sent to `POST /biosamples/search` expressed as JSON.
-  ga4ghSearchBiosamplesResponse:
+  SearchBiosamplesResponse:
     type: object
     properties:
       biosamples:
         type: array
         items:
-          $ref: '#/definitions/ga4ghBiosample'
+          $ref: '#/definitions/Biosample'
         description: The list of biosamples.
       next_page_token:
         type: string
@@ -2034,7 +2034,7 @@ definitions:
           Provide this value in a subsequent request to return the next page of
           results. This field will be empty if there aren't any additional results.
     description: This is the response from `POST /biosamples/search` expressed as JSON.
-  ga4ghSearchCallSetsRequest:
+  SearchCallSetsRequest:
     type: object
     properties:
       variant_set_id:
@@ -2061,13 +2061,13 @@ definitions:
     description: |-
       ******************  /callsets  *********************
       This request maps to the body of `POST /callsets/search` as JSON.
-  ga4ghSearchCallSetsResponse:
+  SearchCallSetsResponse:
     type: object
     properties:
       call_sets:
         type: array
         items:
-          $ref: '#/definitions/ga4ghCallSet'
+          $ref: '#/definitions/CallSet'
         description: The list of matching call sets.
       next_page_token:
         type: string
@@ -2076,7 +2076,7 @@ definitions:
           Provide this value in a subsequent request to return the next page of
           results. This field will be empty if there aren't any additional results.
     description: This is the response from `POST /callsets/search` expressed as JSON.
-  ga4ghSearchContinuousRequest:
+  SearchContinuousRequest:
     type: object
     properties:
       continuous_set_id:
@@ -2112,13 +2112,13 @@ definitions:
           To get the next page of results, set this parameter to the value of
           `next_page_token` from the previous response.
     description: This request maps to the body of `POST /continuous/search` as JSON.
-  ga4ghSearchContinuousResponse:
+  SearchContinuousResponse:
     type: object
     properties:
       continuous:
         type: array
         items:
-          $ref: '#/definitions/ga4ghContinuous'
+          $ref: '#/definitions/Continuous'
         description: |-
           The list of matching continuous values, sorted by start position.
           All sampled values within the query range are returned.
@@ -2133,7 +2133,7 @@ definitions:
           Provide this value in a subsequent request to return the next page of
           results. This field will be empty if there aren't any additional results.
     description: This is the response from `POST /continuous/search` expressed as JSON.
-  ga4ghSearchContinuousSetsRequest:
+  SearchContinuousSetsRequest:
     type: object
     properties:
       dataset_id:
@@ -2152,13 +2152,13 @@ definitions:
           To get the next page of results, set this parameter to the value of
           `next_page_token` from the previous response.
     description: '* This request maps to the body of `POST /continuoussets/search` as JSON.'
-  ga4ghSearchContinuousSetsResponse:
+  SearchContinuousSetsResponse:
     type: object
     properties:
       continuous_sets:
         type: array
         items:
-          $ref: '#/definitions/ga4ghContinuousSet'
+          $ref: '#/definitions/ContinuousSet'
         description: The list of matching feature sets.
       next_page_token:
         type: string
@@ -2167,7 +2167,7 @@ definitions:
           Provide this value in a subsequent request to return the next page of
           results. This field will be empty if there aren't any additional results.
     description: This is the response from `POST /continuoussets/search` expressed as JSON.
-  ga4ghSearchDatasetsRequest:
+  SearchDatasetsRequest:
     type: object
     properties:
       page_size:
@@ -2183,13 +2183,13 @@ definitions:
           To get the next page of results, set this parameter to the value of
           `next_page_token` from the previous response.
     description: This request maps to the body of `POST /datasets/search` as JSON.
-  ga4ghSearchDatasetsResponse:
+  SearchDatasetsResponse:
     type: object
     properties:
       datasets:
         type: array
         items:
-          $ref: '#/definitions/ga4ghDataset'
+          $ref: '#/definitions/Dataset'
         description: The list of datasets.
       next_page_token:
         type: string
@@ -2198,7 +2198,7 @@ definitions:
           Provide this value in a subsequent request to return the next page of
           results. This field will be empty if there aren't any additional results.
     description: This is the response from `POST /datasets/search` expressed as JSON.
-  ga4ghSearchExpressionLevelsRequest:
+  SearchExpressionLevelsRequest:
     type: object
     properties:
       rna_quantification_id:
@@ -2231,13 +2231,13 @@ definitions:
       ****************  /expressionlevels/search  *******************
       This request maps to the body of 'POST /expressionlevels/search'
       as JSON.
-  ga4ghSearchExpressionLevelsResponse:
+  SearchExpressionLevelsResponse:
     type: object
     properties:
       expression_levels:
         type: array
         items:
-          $ref: '#/definitions/ga4ghExpressionLevel'
+          $ref: '#/definitions/ExpressionLevel'
         description: The list of matching quantifications.
       next_page_token:
         type: string
@@ -2246,7 +2246,7 @@ definitions:
           To get the next page of results, set this parameter to the value of
           'nextPageToken' from the previous response.
     description: This is the response from 'POST /expressionlevels/search' expressed as JSON.
-  ga4ghSearchFeatureSetsRequest:
+  SearchFeatureSetsRequest:
     type: object
     properties:
       dataset_id:
@@ -2265,13 +2265,13 @@ definitions:
           To get the next page of results, set this parameter to the value of
           `next_page_token` from the previous response.
     description: '* This request maps to the body of `POST /featuresets/search` as JSON.'
-  ga4ghSearchFeatureSetsResponse:
+  SearchFeatureSetsResponse:
     type: object
     properties:
       feature_sets:
         type: array
         items:
-          $ref: '#/definitions/ga4ghFeatureSet'
+          $ref: '#/definitions/FeatureSet'
         description: The list of matching feature sets.
       next_page_token:
         type: string
@@ -2280,7 +2280,7 @@ definitions:
           Provide this value in a subsequent request to return the next page of
           results. This field will be empty if there aren't any additional results.
     description: This is the response from `POST /featuresets/search` expressed as JSON.
-  ga4ghSearchFeaturesRequest:
+  SearchFeaturesRequest:
     type: object
     properties:
       feature_set_id:
@@ -2347,13 +2347,13 @@ definitions:
           To get the next page of results, set this parameter to the value of
           `next_page_token` from the previous response.
     description: This request maps to the body of `POST /features/search` as JSON.
-  ga4ghSearchFeaturesResponse:
+  SearchFeaturesResponse:
     type: object
     properties:
       features:
         type: array
         items:
-          $ref: '#/definitions/ga4ghFeature'
+          $ref: '#/definitions/Feature'
         description: |-
           The list of matching annotations, sorted by start position. Annotations
           which share a start position are returned in a deterministic order.
@@ -2364,7 +2364,7 @@ definitions:
           Provide this value in a subsequent request to return the next page of
           results. This field will be empty if there aren't any additional results.
     description: This is the response from `POST /features/search` expressed as JSON.
-  ga4ghSearchGenotypePhenotypeRequest:
+  SearchGenotypePhenotypeRequest:
     type: object
     properties:
       phenotype_association_set_id:
@@ -2383,7 +2383,7 @@ definitions:
       evidence:
         type: array
         items:
-          $ref: '#/definitions/ga4ghEvidenceQuery'
+          $ref: '#/definitions/EvidenceQuery'
         title: evidence
       page_size:
         type: string
@@ -2425,13 +2425,13 @@ definitions:
       Each query can be made against a string, an array of external
       identifers (such as for gene or SNP ids), ontology term ids, or
       full feature/phenotype/evidence objects.
-  ga4ghSearchGenotypePhenotypeResponse:
+  SearchGenotypePhenotypeResponse:
     type: object
     properties:
       associations:
         type: array
         items:
-          $ref: '#/definitions/ga4ghFeaturePhenotypeAssociation'
+          $ref: '#/definitions/FeaturePhenotypeAssociation'
         description: The list of matching FeaturePhenotypeAssociation.
       next_page_token:
         type: string
@@ -2440,7 +2440,7 @@ definitions:
           Provide this value in a subsequent request to return the next page of
           results. This field will be empty if there aren't any additional results.
     description: This is the response from `POST /genotypephenotype/search` expressed as JSON.
-  ga4ghSearchIndividualsRequest:
+  SearchIndividualsRequest:
     type: object
     properties:
       dataset_id:
@@ -2464,13 +2464,13 @@ definitions:
     description: |-
       *********************  /individuals ********************************
       This request maps to the body of `POST /individuals/search` as JSON.
-  ga4ghSearchIndividualsResponse:
+  SearchIndividualsResponse:
     type: object
     properties:
       individuals:
         type: array
         items:
-          $ref: '#/definitions/ga4ghIndividual'
+          $ref: '#/definitions/Individual'
         description: The list of individuals.
       next_page_token:
         type: string
@@ -2479,7 +2479,7 @@ definitions:
           Provide this value in a subsequent request to return the next page of
           results. This field will be empty if there aren't any additional results.
     description: This is the response from `POST /individuals/search` expressed as JSON.
-  ga4ghSearchPhenotypeAssociationSetsRequest:
+  SearchPhenotypeAssociationSetsRequest:
     type: object
     properties:
       dataset_id:
@@ -2498,13 +2498,13 @@ definitions:
           To get the next page of results, set this parameter to the value of
           `nextPageToken` from the previous response.
     description: This request maps to the body of `POST /phenotypeassociationsets/search` as JSON.
-  ga4ghSearchPhenotypeAssociationSetsResponse:
+  SearchPhenotypeAssociationSetsResponse:
     type: object
     properties:
       phenotype_association_sets:
         type: array
         items:
-          $ref: '#/definitions/ga4ghPhenotypeAssociationSet'
+          $ref: '#/definitions/PhenotypeAssociationSet'
         description: The list of matching phenotype association sets.
       next_page_token:
         type: string
@@ -2513,7 +2513,7 @@ definitions:
           Provide this value in a subsequent request to return the next page of
           results. This field will be empty if there aren't any additional results.
     description: This is the response from `POST /phenotypeassociationsets/search` expressed as JSON.
-  ga4ghSearchPhenotypesRequest:
+  SearchPhenotypesRequest:
     type: object
     properties:
       phenotype_association_set_id:
@@ -2528,15 +2528,15 @@ definitions:
         type: string
         title: 'The system may support regex. https://www.w3.org/TR/xpath-functions/#regex-syntax'
       type:
-        $ref: '#/definitions/ga4ghOntologyTerm'
+        $ref: '#/definitions/OntologyTerm'
         title: Only return results that match this type
       qualifiers:
         type: array
         items:
-          $ref: '#/definitions/ga4ghOntologyTerm'
+          $ref: '#/definitions/OntologyTerm'
         title: terms should be OR'd together. e.g. (severe OR abnormal)
       age_of_onset:
-        $ref: '#/definitions/ga4ghOntologyTerm'
+        $ref: '#/definitions/OntologyTerm'
         title: Only return results that match this age of onset
       page_size:
         type: string
@@ -2550,13 +2550,13 @@ definitions:
           The continuation token, which is used to page through large result sets.
           To get the next page of results, set this parameter to the value of
           `next_page_token` from the previous response.
-  ga4ghSearchPhenotypesResponse:
+  SearchPhenotypesResponse:
     type: object
     properties:
       phenotypes:
         type: array
         items:
-          $ref: '#/definitions/ga4ghPhenotypeInstance'
+          $ref: '#/definitions/PhenotypeInstance'
         description: The list of matching PhenotypeInstances.
       next_page_token:
         type: string
@@ -2565,7 +2565,7 @@ definitions:
           Provide this value in a subsequent request to return the next page of
           results. This field will be empty if there aren't any additional results.
     description: This is the response from `POST /phenotypes/search` expressed as JSON.
-  ga4ghSearchReferenceSetsRequest:
+  SearchReferenceSetsRequest:
     type: object
     properties:
       md5checksum:
@@ -2599,13 +2599,13 @@ definitions:
     description: |-
       ****************  /referencesets  *******************
       This request maps to the body of `POST /referencesets/search` as JSON.
-  ga4ghSearchReferenceSetsResponse:
+  SearchReferenceSetsResponse:
     type: object
     properties:
       reference_sets:
         type: array
         items:
-          $ref: '#/definitions/ga4ghReferenceSet'
+          $ref: '#/definitions/ReferenceSet'
         description: The list of matching reference sets.
       next_page_token:
         type: string
@@ -2614,7 +2614,7 @@ definitions:
           Provide this value in a subsequent request to return the next page of
           results. This field will be empty if there aren't any additional results.
     description: This is the response from `POST /referencesets/search` expressed as JSON.
-  ga4ghSearchReferencesRequest:
+  SearchReferencesRequest:
     type: object
     properties:
       reference_set_id:
@@ -2646,13 +2646,13 @@ definitions:
     description: |-
       ****************  /references  *******************
       This request maps to the body of `POST /references/search` as JSON.
-  ga4ghSearchReferencesResponse:
+  SearchReferencesResponse:
     type: object
     properties:
       references:
         type: array
         items:
-          $ref: '#/definitions/ga4ghReference'
+          $ref: '#/definitions/Reference'
         description: The list of matching references.
       next_page_token:
         type: string
@@ -2661,7 +2661,7 @@ definitions:
           Provide this value in a subsequent request to return the next page of
           results. This field will be empty if there aren't any additional results.
     description: This is the response from `POST /references/search` expressed as JSON.
-  ga4ghSearchRnaQuantificationSetsRequest:
+  SearchRnaQuantificationSetsRequest:
     type: object
     properties:
       dataset_id:
@@ -2682,13 +2682,13 @@ definitions:
     description: |-
       This request maps to the body of 'POST /rnaquantificationsets/search'
       as JSON.
-  ga4ghSearchRnaQuantificationSetsResponse:
+  SearchRnaQuantificationSetsResponse:
     type: object
     properties:
       rna_quantification_sets:
         type: array
         items:
-          $ref: '#/definitions/ga4ghRnaQuantificationSet'
+          $ref: '#/definitions/RnaQuantificationSet'
         description: The list of matching quantification sets.
       next_page_token:
         type: string
@@ -2697,7 +2697,7 @@ definitions:
           To get the next page of results, set this parameter to the value of
           'nextPageToken' from the previous response.
     description: This is the response from 'POST /rnaquantificationsets/search' expressed as JSON.
-  ga4ghSearchRnaQuantificationsRequest:
+  SearchRnaQuantificationsRequest:
     type: object
     properties:
       rna_quantification_set_id:
@@ -2723,13 +2723,13 @@ definitions:
     description: |-
       This request maps to the body of 'POST /rnaquantifications/search'
       as JSON.
-  ga4ghSearchRnaQuantificationsResponse:
+  SearchRnaQuantificationsResponse:
     type: object
     properties:
       rna_quantifications:
         type: array
         items:
-          $ref: '#/definitions/ga4ghRnaQuantification'
+          $ref: '#/definitions/RnaQuantification'
         description: The list of matching quantifications.
       next_page_token:
         type: string
@@ -2738,7 +2738,7 @@ definitions:
           To get the next page of results, set this parameter to the value of
           'nextPageToken' from the previous response.
     description: This is the response from 'POST /rnaquantifications/search' expressed as JSON.
-  ga4ghSearchVariantAnnotationSetsRequest:
+  SearchVariantAnnotationSetsRequest:
     type: object
     properties:
       variant_set_id:
@@ -2759,13 +2759,13 @@ definitions:
     description: |-
       This request maps to the body of `POST /variantannotationsets/search` as
       JSON.
-  ga4ghSearchVariantAnnotationSetsResponse:
+  SearchVariantAnnotationSetsResponse:
     type: object
     properties:
       variant_annotation_sets:
         type: array
         items:
-          $ref: '#/definitions/ga4ghVariantAnnotationSet'
+          $ref: '#/definitions/VariantAnnotationSet'
         description: The list of matching variant annotation sets.
       next_page_token:
         type: string
@@ -2776,7 +2776,7 @@ definitions:
     description: |-
       This is the response from `POST /variantannotationsets/search` expressed as
       JSON.
-  ga4ghSearchVariantAnnotationsRequest:
+  SearchVariantAnnotationsRequest:
     type: object
     properties:
       variant_annotation_set_id:
@@ -2812,7 +2812,7 @@ definitions:
       effects:
         type: array
         items:
-          $ref: '#/definitions/ga4ghOntologyTerm'
+          $ref: '#/definitions/OntologyTerm'
         description: |-
           This filter allows variant, transcript combinations to be extracted by
           effect type(s). Only return variant annotations including any of these
@@ -2834,13 +2834,13 @@ definitions:
           To get the next page of results, set this parameter to the value of
           `next_page_token` from the previous response.
     description: This request maps to the body of `POST /variantannotations/search` as JSON.
-  ga4ghSearchVariantAnnotationsResponse:
+  SearchVariantAnnotationsResponse:
     type: object
     properties:
       variant_annotations:
         type: array
         items:
-          $ref: '#/definitions/ga4ghVariantAnnotation'
+          $ref: '#/definitions/VariantAnnotation'
         description: The list of matching variant annotations.
       next_page_token:
         type: string
@@ -2851,7 +2851,7 @@ definitions:
     description: |-
       This is the response from `POST /variantannotations/search` expressed as
       JSON.
-  ga4ghSearchVariantSetsRequest:
+  SearchVariantSetsRequest:
     type: object
     properties:
       dataset_id:
@@ -2872,13 +2872,13 @@ definitions:
     description: |-
       ******************  /variantsets  *********************
       This request maps to the body of `POST /variantsets/search` as JSON.
-  ga4ghSearchVariantSetsResponse:
+  SearchVariantSetsResponse:
     type: object
     properties:
       variant_sets:
         type: array
         items:
-          $ref: '#/definitions/ga4ghVariantSet'
+          $ref: '#/definitions/VariantSet'
         description: The list of matching variant sets.
       next_page_token:
         type: string
@@ -2887,7 +2887,7 @@ definitions:
           Provide this value in a subsequent request to return the next page of
           results. This field will be empty if there aren't any additional results.
     description: This is the response from `POST /variantsets/search` expressed as JSON.
-  ga4ghSearchVariantsRequest:
+  SearchVariantsRequest:
     type: object
     properties:
       variant_set_id:
@@ -2933,13 +2933,13 @@ definitions:
     description: |-
       ******************  /variants  *********************
       This request maps to the body of `POST /variants/search` as JSON.
-  ga4ghSearchVariantsResponse:
+  SearchVariantsResponse:
     type: object
     properties:
       variants:
         type: array
         items:
-          $ref: '#/definitions/ga4ghVariant'
+          $ref: '#/definitions/Variant'
         description: |-
           The list of matching variants.
           If the `callSetId` field on the returned calls is not present,
@@ -2954,7 +2954,7 @@ definitions:
           Provide this value in a subsequent request to return the next page of
           results. This field will be empty if there aren't any additional results.
     description: This is the response from `POST /variants/search` expressed as JSON.
-  ga4ghStrand:
+  Strand:
     type: string
     enum:
       - STRAND_UNSPECIFIED
@@ -2967,7 +2967,7 @@ definitions:
        - STRAND_UNSPECIFIED: If no strand data is available.
        - NEG_STRAND: The negative (-) strand.
        - POS_STRAND: The postive (+) strand.
-  ga4ghTranscriptEffect:
+  TranscriptEffect:
     type: object
     properties:
       id:
@@ -2986,32 +2986,32 @@ definitions:
       effects:
         type: array
         items:
-          $ref: '#/definitions/ga4ghOntologyTerm'
+          $ref: '#/definitions/OntologyTerm'
         description: Effect of variant on this feature.
       hgvs_annotation:
-        $ref: '#/definitions/ga4ghHGVSAnnotation'
+        $ref: '#/definitions/HGVSAnnotation'
         description: Human Genome Variation Society variant descriptions.
       cdna_location:
-        $ref: '#/definitions/ga4ghAlleleLocation'
+        $ref: '#/definitions/AlleleLocation'
         description: Change relative to cDNA.
       cds_location:
-        $ref: '#/definitions/ga4ghAlleleLocation'
+        $ref: '#/definitions/AlleleLocation'
         description: Change relative to coding sequence.
       protein_location:
-        $ref: '#/definitions/ga4ghAlleleLocation'
+        $ref: '#/definitions/AlleleLocation'
         description: Change relative to protein.
       analysis_results:
         type: array
         items:
-          $ref: '#/definitions/ga4ghAnalysisResult'
+          $ref: '#/definitions/AnalysisResult'
         description: Output from prediction packages such as SIFT.
       attributes:
-        $ref: '#/definitions/ga4ghAttributes'
+        $ref: '#/definitions/Attributes'
         description: A map of additional information about the Transcript Effect.
     title: |-
       A transcript effect record is a set of information describing the effect of
       an allele on a transcript
-  ga4ghVariant:
+  Variant:
     type: object
     properties:
       id:
@@ -3072,12 +3072,12 @@ definitions:
           The bases that appear instead of the reference bases. Multiple alternate
           alleles are possible.
       attributes:
-        $ref: '#/definitions/ga4ghAttributes'
+        $ref: '#/definitions/Attributes'
         description: A map of additional information about the Variant.
       calls:
         type: array
         items:
-          $ref: '#/definitions/ga4ghCall'
+          $ref: '#/definitions/Call'
         description: |-
           The variant calls for this particular variant. Each one represents the
           determination of genotype with respect to this variant. `Call`s in this
@@ -3142,7 +3142,7 @@ definitions:
       For example, a variant could represent a SNP or an insertion.
       Variants belong to a `VariantSet`.
       This is equivalent to a row in VCF.
-  ga4ghVariantAnnotation:
+  VariantAnnotation:
     type: object
     properties:
       id:
@@ -3160,17 +3160,17 @@ definitions:
       transcript_effects:
         type: array
         items:
-          $ref: '#/definitions/ga4ghTranscriptEffect'
+          $ref: '#/definitions/TranscriptEffect'
         description: |-
           The transcript effect annotation for the alleles of this variant. Each
           one represents the effect of a single allele on a single transcript.
       attributes:
-        $ref: '#/definitions/ga4ghAttributes'
+        $ref: '#/definitions/Attributes'
         description: A map of additional information about the Annotation.
     description: |-
       A `VariantAnnotation` record represents the result of comparing a variant to
       a set of reference data.
-  ga4ghVariantAnnotationSet:
+  VariantAnnotationSet:
     type: object
     properties:
       id:
@@ -3183,18 +3183,18 @@ definitions:
         type: string
         description: The variant annotation set name.
       analysis:
-        $ref: '#/definitions/ga4ghAnalysis'
+        $ref: '#/definitions/Analysis'
         description: |-
           Analysis details. It is essential to supply versions for all software and
           reference data used.
       attributes:
-        $ref: '#/definitions/ga4ghAttributes'
+        $ref: '#/definitions/Attributes'
         description: A map of additional information about the Annotation Set.
     description: |-
       A VariantAnnotationSet record groups VariantAnnotation records. It is derived
       from a VariantSet and holds information describing the software and reference
       data used in the annotation.
-  ga4ghVariantSet:
+  VariantSet:
     type: object
     properties:
       id:
@@ -3214,7 +3214,7 @@ definitions:
       metadata:
         type: array
         items:
-          $ref: '#/definitions/ga4ghVariantSetMetadata'
+          $ref: '#/definitions/VariantSetMetadata'
         description: |-
           Optional metadata associated with this variant set.
           This array can be used to store information about the variant set, such as
@@ -3223,7 +3223,7 @@ definitions:
     description: |-
       A VariantSet is a collection of variants and variant calls intended to be
       analyzed together.
-  ga4ghVariantSetMetadata:
+  VariantSetMetadata:
     type: object
     properties:
       key:
@@ -3251,7 +3251,7 @@ definitions:
         type: string
         description: A textual description of this metadata.
       attributes:
-        $ref: '#/definitions/ga4ghAttributes'
+        $ref: '#/definitions/Attributes'
         description: A map of additional information about the metadata record.
     description: This metadata represents VCF header information.
   googleprotobufNullValue:
