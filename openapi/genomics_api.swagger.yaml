@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
-  title: ga4gh/all.proto
-  version: version not set
+  title: GA4GH Genomics API
+  version: 0.6.0a11
 schemes:
   - http
   - https
@@ -9,8 +9,9 @@ consumes:
   - application/json
 produces:
   - application/json
+basePath: '/v0.6.0a10/'
 paths:
-  /v0.6.0a10/announce:
+  /announce:
     post:
       summary: |-
         Allows a client to notify a service of a potential peer.
@@ -31,7 +32,7 @@ paths:
             $ref: '#/definitions/ga4ghAnnouncePeerResponse'
       tags:
         - PeerService
-  /v0.6.0a10/biosamples/search:
+  /biosamples/search:
     post:
       summary: |-
         `POST /biosamples/search` must accept a JSON version of
@@ -51,7 +52,7 @@ paths:
             $ref: '#/definitions/ga4ghSearchBiosamplesRequest'
       tags:
         - BioMetadataService
-  '/v0.6.0a10/biosamples/{biosample_id}':
+  '/biosamples/{biosample_id}':
     get:
       summary: |-
         Gets a `Biosample` by ID.
@@ -69,7 +70,7 @@ paths:
           type: string
       tags:
         - BioMetadataService
-  /v0.6.0a10/callsets/search:
+  /callsets/search:
     post:
       summary: Gets a list of call sets matching the search criteria.
       description: |-
@@ -90,7 +91,7 @@ paths:
             $ref: '#/definitions/ga4ghSearchCallSetsRequest'
       tags:
         - VariantService
-  '/v0.6.0a10/callsets/{call_set_id}':
+  '/callsets/{call_set_id}':
     get:
       summary: Gets a `CallSet` by ID.
       description: '`GET /callsets/{id}` will return a JSON version of `CallSet`.'
@@ -107,7 +108,7 @@ paths:
           type: string
       tags:
         - VariantService
-  /v0.6.0a10/datasets/search:
+  /datasets/search:
     post:
       summary: Gets a list of `Dataset` matching the search criteria.
       description: |-
@@ -128,7 +129,7 @@ paths:
             $ref: '#/definitions/ga4ghSearchDatasetsRequest'
       tags:
         - MetadataService
-  '/v0.6.0a10/datasets/{dataset_id}':
+  '/datasets/{dataset_id}':
     get:
       summary: Gets a `Dataset` by ID.
       description: |-
@@ -147,7 +148,7 @@ paths:
           type: string
       tags:
         - MetadataService
-  /v0.6.0a10/expressionlevels/search:
+  /expressionlevels/search:
     post:
       summary: |-
         'POST /expressionlevels/search' must accept JSON version of
@@ -167,7 +168,7 @@ paths:
             $ref: '#/definitions/ga4ghSearchExpressionLevelsRequest'
       tags:
         - RnaQuantificationService
-  '/v0.6.0a10/expressionlevels/{expression_level_id}':
+  '/expressionlevels/{expression_level_id}':
     get:
       summary: |-
         Gets a `ExpressionLevel` by ID.
@@ -186,7 +187,7 @@ paths:
           type: string
       tags:
         - RnaQuantificationService
-  /v0.6.0a10/featurephenotypeassociations/search:
+  /featurephenotypeassociations/search:
     post:
       summary: |-
         Gets a list of genotype-phenotype assoications accessible through the API.
@@ -207,7 +208,7 @@ paths:
             $ref: '#/definitions/ga4ghSearchGenotypePhenotypeRequest'
       tags:
         - GenotypePhenotypeService
-  /v0.6.0a10/features/search:
+  /features/search:
     post:
       summary: Gets a list of `Feature` matching the search criteria.
       description: |-
@@ -228,7 +229,7 @@ paths:
             $ref: '#/definitions/ga4ghSearchFeaturesRequest'
       tags:
         - SequenceAnnotationService
-  '/v0.6.0a10/features/{feature_id}':
+  '/features/{feature_id}':
     get:
       summary: Gets a `Feature` by ID.
       description: '`GET /features/{id}` will return a JSON version of `Feature`.'
@@ -245,7 +246,7 @@ paths:
           type: string
       tags:
         - SequenceAnnotationService
-  /v0.6.0a10/featuresets/search:
+  /featuresets/search:
     post:
       summary: Gets a list of `FeatureSet` matching the search criteria.
       description: |-
@@ -266,7 +267,7 @@ paths:
             $ref: '#/definitions/ga4ghSearchFeatureSetsRequest'
       tags:
         - SequenceAnnotationService
-  '/v0.6.0a10/featuresets/{feature_set_id}':
+  '/featuresets/{feature_set_id}':
     get:
       summary: Gets a `FeatureSet` by ID.
       description: '`GET /featuresets/{id}` will return a JSON version of `FeatureSet`.'
@@ -283,7 +284,7 @@ paths:
           type: string
       tags:
         - SequenceAnnotationService
-  /v0.6.0a10/individuals/search:
+  /individuals/search:
     post:
       summary: |-
         Gets a list of Individuals accessible through the API.
@@ -304,7 +305,7 @@ paths:
             $ref: '#/definitions/ga4ghSearchIndividualsRequest'
       tags:
         - BioMetadataService
-  '/v0.6.0a10/individuals/{individual_id}':
+  '/individuals/{individual_id}':
     get:
       summary: |-
         Gets an `Individual` by ID.
@@ -322,7 +323,7 @@ paths:
           type: string
       tags:
         - BioMetadataService
-  /v0.6.0a10/info:
+  /info:
     get:
       summary: |-
         Provides peers with a way to identify the protocol version
@@ -339,7 +340,7 @@ paths:
             $ref: '#/definitions/ga4ghGetInfoResponse'
       tags:
         - PeerService
-  /v0.6.0a10/peers/list:
+  /peers/list:
     post:
       summary: |-
         Gets a list of `Peer` messages that are being managed by the
@@ -363,7 +364,7 @@ paths:
             $ref: '#/definitions/ga4ghListPeersRequest'
       tags:
         - PeerService
-  /v0.6.0a10/phenotypeassociationsets/search:
+  /phenotypeassociationsets/search:
     post:
       summary: |-
         Gets a list of association sets accessible through the API.
@@ -384,7 +385,7 @@ paths:
             $ref: '#/definitions/ga4ghSearchPhenotypeAssociationSetsRequest'
       tags:
         - GenotypePhenotypeService
-  /v0.6.0a10/phenotypes/search:
+  /phenotypes/search:
     post:
       summary: |-
         Gets a list of phenotypes accessible through the API.
@@ -405,7 +406,7 @@ paths:
             $ref: '#/definitions/ga4ghSearchPhenotypesRequest'
       tags:
         - GenotypePhenotypeService
-  /v0.6.0a10/references/search:
+  /references/search:
     post:
       summary: Gets a list of `Reference` matching the search criteria.
       description: |-
@@ -426,7 +427,7 @@ paths:
             $ref: '#/definitions/ga4ghSearchReferencesRequest'
       tags:
         - ReferenceService
-  '/v0.6.0a10/references/{reference_id}':
+  '/references/{reference_id}':
     get:
       summary: Gets a `Reference` by ID.
       description: |-
@@ -445,7 +446,7 @@ paths:
           type: string
       tags:
         - ReferenceService
-  '/v0.6.0a10/references/{reference_id}/bases':
+  '/references/{reference_id}/bases':
     post:
       summary: Lists `Reference` bases by ID and optional range.
       description: |-
@@ -469,7 +470,7 @@ paths:
             $ref: '#/definitions/ga4ghListReferenceBasesRequest'
       tags:
         - ReferenceService
-  /v0.6.0a10/referencesets/search:
+  /referencesets/search:
     post:
       summary: Gets a list of `ReferenceSet` matching the search criteria.
       description: |-
@@ -490,7 +491,7 @@ paths:
             $ref: '#/definitions/ga4ghSearchReferenceSetsRequest'
       tags:
         - ReferenceService
-  '/v0.6.0a10/referencesets/{reference_set_id}':
+  '/referencesets/{reference_set_id}':
     get:
       summary: Gets a `ReferenceSet` by ID.
       description: |-
@@ -509,7 +510,7 @@ paths:
           type: string
       tags:
         - ReferenceService
-  /v0.6.0a10/rnaquantifications/search:
+  /rnaquantifications/search:
     post:
       summary: |-
         Gets a list of 'RnaQuantification' matching the search criteria.
@@ -530,7 +531,7 @@ paths:
             $ref: '#/definitions/ga4ghSearchRnaQuantificationsRequest'
       tags:
         - RnaQuantificationService
-  '/v0.6.0a10/rnaquantifications/{rna_quantification_id}':
+  '/rnaquantifications/{rna_quantification_id}':
     get:
       summary: |-
         Gets a `RnaQuantification` by ID.
@@ -549,7 +550,7 @@ paths:
           type: string
       tags:
         - RnaQuantificationService
-  /v0.6.0a10/rnaquantificationsets/search:
+  /rnaquantificationsets/search:
     post:
       summary: |-
         Gets a list of 'RnaQuantificationSet' matching the search criteria.
@@ -570,7 +571,7 @@ paths:
             $ref: '#/definitions/ga4ghSearchRnaQuantificationSetsRequest'
       tags:
         - RnaQuantificationService
-  '/v0.6.0a10/rnaquantificationsets/{rna_quantification_set_id}':
+  '/rnaquantificationsets/{rna_quantification_set_id}':
     get:
       summary: |-
         Gets a `RnaQuantificationSet` by ID.
@@ -589,7 +590,7 @@ paths:
           type: string
       tags:
         - RnaQuantificationService
-  /v0.6.0a10/variantannotations/search:
+  /variantannotations/search:
     post:
       summary: Gets a list of `VariantAnnotation` messages matching the search criteria.
       description: |-
@@ -622,7 +623,7 @@ paths:
             $ref: '#/definitions/ga4ghSearchVariantAnnotationsRequest'
       tags:
         - AlleleAnnotationService
-  /v0.6.0a10/variantannotationsets/search:
+  /variantannotationsets/search:
     post:
       summary: Returns a list of available variant annotation sets.
       description: |-
@@ -643,7 +644,7 @@ paths:
             $ref: '#/definitions/ga4ghSearchVariantAnnotationSetsRequest'
       tags:
         - AlleleAnnotationService
-  '/v0.6.0a10/variantannotationsets/{variant_annotation_set_id}':
+  '/variantannotationsets/{variant_annotation_set_id}':
     get:
       summary: Gets an `VariantAnnotationSet` by ID.
       description: |-
@@ -662,7 +663,7 @@ paths:
           type: string
       tags:
         - AlleleAnnotationService
-  /v0.6.0a10/variants/search:
+  /variants/search:
     post:
       summary: Gets a list of `Variant` matching the search criteria.
       description: |-
@@ -683,7 +684,7 @@ paths:
             $ref: '#/definitions/ga4ghSearchVariantsRequest'
       tags:
         - VariantService
-  '/v0.6.0a10/variants/{variant_id}':
+  '/variants/{variant_id}':
     post:
       summary: Gets a `Variant` by ID.
       description: '`GET /variants/{id}` will return a JSON version of `Variant`.'
@@ -700,7 +701,7 @@ paths:
           type: string
       tags:
         - VariantService
-  /v0.6.0a10/variantsets/search:
+  /variantsets/search:
     post:
       summary: Gets a list of `VariantSet` matching the search criteria.
       description: |-
@@ -721,7 +722,7 @@ paths:
             $ref: '#/definitions/ga4ghSearchVariantSetsRequest'
       tags:
         - VariantService
-  '/v0.6.0a10/variantsets/{variant_set_id}':
+  '/variantsets/{variant_set_id}':
     get:
       summary: Gets a `VariantSet` by ID.
       description: |-
